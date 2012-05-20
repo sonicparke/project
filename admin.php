@@ -34,7 +34,6 @@
             var params = {
                 test: 'Hi'
             }
-             
         });
     </script>
   </body>
