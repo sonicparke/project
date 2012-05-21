@@ -14,8 +14,30 @@ $(function () {
 
 // SLIDING FORM
 (function  (params) {
-	// $('#submit').on('click', function (e) {
-	// 	$('.searchForm').slideUp('fast')
+
+
+
+
+	// $('#submit, #toggleSlide').on('click', function (e) {
+	// 	$('.searchForm form').not('#submit').animate({
+	// 		opacity: 'toggle',
+	// 		height: 'toggle'
+	// 	},
+	// 		1000, function() {
+	// 		// stuff to do after animation is complete
+	// 	});
 	// })
+
+$(".listItem").on('click', function (e) {
+	$(".vendorDetail" ).dialog({
+			height: 140,
+			modal: true
+		});
+
+})
 	
 })();
+
+
+
+

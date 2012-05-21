@@ -8,12 +8,13 @@ html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,addre
 /* ==================================================================================================================== */
 
 .container {
+	margin: 0 auto;
 padding-left: 20px;
 padding-right: 20px;
+max-width: 1140px;
 }
 
 .row {
-width: 100%;
 max-width: 1140px;
 min-width: 755px;
 margin: 0 auto;
@@ -145,8 +146,8 @@ ul {
 
 .searchForm {
 	position: relative;
-	margin: 50px 0;
-	height: 350px;
+	margin: 30px auto;
+	min-height: 325px;
 	order: 2px solid;
 }
 
@@ -237,6 +238,10 @@ button[type=reset]:hover {
 
 
 /*** FORM ELEMENTS ***/
+.searchForm form {
+	eight: 325px;
+}
+
 form ul li {
 	display: inline-block;
 	margin-bottom: 10px;
@@ -293,10 +298,9 @@ input[type=textbox].search  {
 
 form ul.formGroup {
 	float: left;
-	margin: 10px;
 	padding: 10px;
 	width: 28%;
-	height: 235px;
+	min-height: 240px;
 	background: #efefef;
 	border: 1px solid #c9c9c9;
 	-webkit-border-radius: 5px;
@@ -304,14 +308,17 @@ form ul.formGroup {
 	border-radius: 5px;
 }
 
+form ul.formGroup.fourcol {
+	width: 28.9%;
+}
+
 form ul.formGroup.buttons {
 	display: inline;
-	float: none;
+	float: right;
+	padding-right: 0;
 	width: auto;
 	height: auto;
-	position: absolute;
-	bottom: -20px;
-	right: 45px;
+	min-height: 38px;
 	background: transparent;
 	border: none;
 }
@@ -336,10 +343,10 @@ form ul.formGroup.products li {
 	margin-bottom: 10px;
 }
 
-
 form ul.formGroup.products {
 	osition: absolute;
 }
+
 form ul.formGroup .listTitle {
 	font-size: 18px;
 	font-weight: bold;
@@ -351,6 +358,105 @@ form ul.formGroup .listTitle span {
 	font-weight: normal;
 	font-style: italic;
 }
+
+
+/*** RESULTS ELEMENTS ***/
+.container.searchResults {
+	adding-left: 0;
+	adding-right: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+}
+
+.searchResults li.row {
+	width: auto;
+	font-size: 12px;
+}
+
+.searchResults {
+	border: 1px solid #c9c9c9;
+	border-radius: 5px;
+}
+
+.searchResults li {
+	padding: 10px;
+}
+
+.searchResults li.listItem:hover {
+	color: #ffffff;
+	ont-weight: bold;
+	background-color: #3799FF;
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+}
+
+.searchResults li span {
+	display: inline-block;
+}
+
+.searchResults h2.listTitle {
+	padding: 20px 10px;
+	font-size: 100%;
+	font-weight: bold;
+	background: #efefef;
+	border-bottom: 1px solid #c9c9c9;
+	
+}
+
+
+/*** VENDOR DETAIL ***/
+.vendorDetail {
+	display: none;
+}
+
+
+/**************************************** 
+
+	JPAGES 
+	http://luis-almeida.github.com/jPages
+
+****************************************/
+.pagination {
+	margin: 15px 0;
+}
+
+.pagination a {
+	font-size: 12px;
+	cursor: pointer;
+	margin: 0 5px;
+	color: #333;
+}
+
+.pagination a:hover {
+	background-color: #222;
+	color: #fff;
+}
+
+.pagination a.jp-previous { margin-right: 15px; }
+.pagination a.jp-next { margin-left: 15px; }
+
+.pagination a.jp-current, a.jp-current:hover { 
+	color: #FF4242;
+	font-weight: bold;
+}
+
+.pagination a.jp-disabled, a.jp-disabled:hover {
+	color: #bbb;
+}
+
+.pagination a.jp-current, a.jp-current:hover,
+.pagination a.jp-disabled, a.jp-disabled:hover {
+	cursor: default; 
+	background: none;
+}
+
+.pagination span { margin: 0 5px; }
+
+
+
+
 
 
 

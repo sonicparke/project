@@ -3,21 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <title>XPO Everything Finder</title>
+    <link rel="stylesheet" type="text/css" href="css/jQuery-UI/jquery-ui-1.8.20.custom.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Nunito?family=Cabin:400,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div class="container">
+    <div class="">
         <div class="header">
             <img src="images/logomergeb.gif" alt="XPO Press" />
             <h1 class="title">XPO Everything Finder</h1>
         </div>
 
-        <div class="wrapperContent container row">
-            <div class="ui-widget searchForm clearfix">
+        <div class="wrapperContent">
+            <div class="ui-widget searchForm container row clearfix">
                 <form>
-                    <ul class="formGroup vendors">
+                    <ul class="formGroup fourcol vendors">
                         <li class="listTitle">Company Information
                             <span>Search for a company you're hoping to find at a show.</span>
                         </li>
@@ -34,7 +34,7 @@
                             <label for="vendors">Country </label><input type="textbox" id="companycountry">
                         </li>
                     </ul>
-                    <ul class="formGroup shows">
+                    <ul class="formGroup fourcol shows">
                         <li class="listTitle">Show Information
                             <span>Search for the name of the show and the city where it is located.</span>
                         </li>
@@ -46,7 +46,7 @@
                         </li>
                     </ul>
                     
-                    <ul class="formGroup products">
+                    <ul class="formGroup fourcol last products">
                         <li class="listTitle">Product Information
                             <span>Search for products you want to locate at a show.</span>
                         </li>
@@ -63,19 +63,77 @@
                         </li>
                     </ul>
                 </form>
+            <!-- <div><a href="#" id="toggleSlide" class="button">Filter Search</a></div> -->
+            </div>
+            <div class="container">
+                <div class="pagination"></div>
+                <div class="searchResults">
+                    <h2 class="row listTitle"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></h2>
+                    <ul id="searchResultsList">
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li><li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                        <li class="row listItem"><span class="twocol col1 ">Company Name</span></span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                    </ul>
+                </div>
+                <div class="pagination"></div>
             </div>
         </div> 
+
     </div>
 
+<div>
+    <ul class="vendorDetail" title="Vendor Detail">
+        <li class="listTitle">Name</li>
+        <li class="listTitle">Address</li>
+        <li class="listTitle">City</li>
+        <li class="listTitle">State</li>
+    </ul>
+</div>
 
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
     <script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
+    <script type="text/javascript" src="js/jPages.min.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script>
         $(document).ready(function(e) {
-            
+   
+            /* initiate plugin */
+            $("div.pagination").jPages({
+                containerID: "searchResultsList",
+                perPage: 10,
+                first: "first",
+                last: "last"
+            });
              
         });
     </script>
