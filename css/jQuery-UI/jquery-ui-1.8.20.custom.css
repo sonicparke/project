@@ -59,7 +59,7 @@
 .ui-widget-content { border: 1px solid #c9c9c9; background: #ffffff; color: #272727; }
 .ui-widget-content a { color: #272727; }
 .ui-widget-header { border: none; background: transparent ; color: #272727; font-weight: bold; }
-.ui-widget-header a { color: #272727; background: url(images/ui-icons_272727_256x240.png) no-repeat #efefef; }
+.ui-widget-header a { color: #272727; background: #efefef; }
 
 /* Interaction states
 ----------------------------------*/
@@ -432,8 +432,10 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
  *
  * http://docs.jquery.com/UI/Dialog#theming
  */
-.ui-dialog { position: absolute; padding: .2em; width: 300px; overflow: hidden; }
+.ui-dialog { position: absolute; padding: 0; width: 300px; overflow: hidden; }
+.ui-dialog { -moz-box-shadow: 0 0 10px rgba(0,0,0,.4); -webkit-box-shadow: 0 0 10px rgba(0,0,0,.4); box-shadow: 0 0 10px rgba(0,0,0,.24); }
 .ui-dialog .ui-dialog-titlebar { padding: .4em 1em; position: relative;  }
+.ui-dialog .ui-dialog-titlebar.ui-corner-all { -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0; -khtml-border-bottom-left-radius: 0; border-bottom-left-radius: 0; }
 .ui-dialog .ui-dialog-title { float: left; margin: .1em 16px .1em 0; } 
 .ui-dialog .ui-dialog-titlebar-close { position: absolute; right: .3em; top: 50%; width: 19px; margin: -10px 0 0 0; padding: 1px; height: 18px; }
 .ui-dialog .ui-dialog-titlebar-close span { display: block; margin: 1px; }
@@ -444,6 +446,7 @@ button.ui-button::-moz-focus-inner { border: 0; padding: 0; } /* reset extra pad
 .ui-dialog .ui-dialog-buttonpane button { margin: .5em .4em .5em 0; cursor: pointer; }
 .ui-dialog .ui-resizable-se { width: 14px; height: 14px; right: 3px; bottom: 3px; }
 .ui-draggable .ui-dialog-titlebar { cursor: move; }
+
 /*!
  * jQuery UI Slider 1.8.20
  *

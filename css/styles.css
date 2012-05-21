@@ -396,7 +396,7 @@ form ul.formGroup .listTitle span {
 	display: inline-block;
 }
 
-.searchResults h2.listTitle {
+.searchResults h2.listTitle, .ui-dialog-titlebar {
 	padding: 20px 10px;
 	font-size: 100%;
 	font-weight: bold;
@@ -410,6 +410,7 @@ form ul.formGroup .listTitle span {
 .vendorDetail {
 	display: none;
 }
+
 
 
 /**************************************** 
