@@ -17,53 +17,62 @@
         <div class="wrapperContent">
             <div class="ui-widget searchForm container row clearfix">
                 <form>
-                    <ul class="formGroup fourcol vendors">
-                        <li class="listTitle">Company Information
-                            <span>Search for a company you're hoping to find at a show.</span>
-                        </li>
-                        <li>
-                            <label for="vendors">Name </label><input type="textbox" id="vendor">
-                        </li>
-                        <li>
-                            <label for="vendors">City </label><input type="textbox" id="companycity">
-                        </li>
-                        <li>
-                            <label for="vendors">State </label><input type="textbox" id="companystate">
-                        </li>
-                        <li>
-                            <label for="vendors">Country </label><input type="textbox" id="companycountry">
-                        </li>
-                    </ul>
-                    <ul class="formGroup fourcol shows">
-                        <li class="listTitle">Show Information
-                            <span>Search for the name of the show and the city where it is located.</span>
-                        </li>
-                        <li>
-                            <label for="vendors">City </label><input type="textbox" id="showcity">
-                        </li>
-                        <li>
-                            <label for="vendors">Name </label><input type="textbox" id="showname">
-                        </li>
-                    </ul>
-                    
-                    <ul class="formGroup fourcol last products">
-                        <li class="listTitle">Product Information
-                            <span>Search for products you want to locate at a show.</span>
-                        </li>
-                        <li>
-                            <label for="vendors">Product </label><input type="textbox" id="product">
-                        </li>
-                    </ul>
-                    <ul class="formGroup buttons">
-                        <li>
-                            <input href="#" id="reset" class="button" type="reset" value="RESET" />
-                        </li>
-                        <li>    
-                            <input href="#" id="submit" class="button" type="submit" value="GO" />
-                        </li>
-                    </ul>
+                    <div class="slide">
+                        <ul class="formGroup fourcol vendors">
+                            <li class="listTitle">Company Information
+                                <span>Search for a company you're hoping to find at a show.</span>
+                            </li>
+                            <li>
+                                <label for="vendors">Name </label><input type="textbox" id="vendor">
+                            </li>
+                            <li>
+                                <label for="vendors">City </label><input type="textbox" id="companycity">
+                            </li>
+                            <li>
+                                <label for="vendors">State </label><input type="textbox" id="companystate">
+                            </li>
+                            <li>
+                                <label for="vendors">Country </label><input type="textbox" id="companycountry">
+                            </li>
+                        </ul>
+                        <ul class="formGroup fourcol shows">
+                            <li class="listTitle">Show Information
+                                <span>Search for the name of the show and the city where it is located.</span>
+                            </li>
+                            <li>
+                                <label for="vendors">City </label><input type="textbox" id="showcity">
+                            </li>
+                            <li>
+                                <label for="vendors">Name </label><input type="textbox" id="showname">
+                            </li>
+                        </ul>
+                        
+                        <ul class="formGroup fourcol last products">
+                            <li class="listTitle">Product Information
+                                <span>Search for products you want to locate at a show.</span>
+                            </li>
+                            <li>
+                                <label for="vendors">Product </label><input type="textbox" id="product">
+                            </li>
+                        </ul>
+
+                        <ul class="formGroup buttons">
+                            <li>
+                                <input href="#" id="reset" class="button" type="reset" value="RESET" />
+                            </li>
+                            <li>    
+                                <input href="#" id="submit" class="button" type="submit" value="GO" />
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        
+                         <a href="#" id="openSearch" class="button hidden">Search Again</a>
+
+                    </div>
+                   
                 </form>
-            <!-- <div><a href="#" id="toggleSlide" class="button">Filter Search</a></div> -->
+            </div>
             </div>
             <div class="container">
                 <div class="pagination"></div>

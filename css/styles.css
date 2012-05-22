@@ -133,6 +133,7 @@ img {
 body {
 	font-family: 'Cabin', Arial, sans-serif;
 	background: url(../images/exteriortile.gif) repeat-x #ffffff;
+	overflow-y: scroll;
 }
 
 .wrapperMain {
@@ -146,9 +147,17 @@ ul {
 
 .searchForm {
 	position: relative;
-	margin: 30px auto;
-	min-height: 325px;
+	margin: 30px auto 10px auto;
+	in-height: 325px;
 	order: 2px solid;
+}
+
+.slide {
+	padding-bottom: 5px;
+}
+
+.hidden {
+	display:none;
 }
 
 
@@ -234,6 +243,10 @@ a.button {
 
 button[type=reset]:hover {
 	background: #444444;
+}
+
+.button#openSearch {
+	float: right;
 }
 
 
@@ -366,7 +379,7 @@ form ul.formGroup .listTitle span {
 	adding-right: 0;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
-	
+	border-radius: 5px;
 }
 
 .searchResults li.row {
@@ -401,8 +414,13 @@ form ul.formGroup .listTitle span {
 	font-size: 100%;
 	font-weight: bold;
 	background: #efefef;
-	border-bottom: 1px solid #c9c9c9;
-	
+	border-bottom: 1px solid #c9c9c9;	
+}
+
+.searchResults h2.listTitle {
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
 }
 
 

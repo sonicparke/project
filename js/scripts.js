@@ -18,15 +18,32 @@ $(function () {
 
 
 
-	// $('#submit, #toggleSlide').on('click', function (e) {
-	// 	$('.searchForm form').not('#submit').animate({
-	// 		opacity: 'toggle',
-	// 		height: 'toggle'
-	// 	},
-	// 		1000, function() {
-	// 		// stuff to do after animation is complete
-	// 	});
-	// })
+	$('#submit').on('click', function (e) {
+			$('#openSearch').fadeIn('fast');
+			$('.slide').animate({
+				opacity: 'toggle',
+				height: 'toggle'
+			},
+				250, function() {
+				// $('.formGroup.buttons').hide();
+				// $('#openSearch').fadeIn('fast');
+			});
+		
+	})
+
+
+	$('#openSearch').on('click', function (e) {
+			$('#openSearch').fadeOut('fast');
+			$('.slide').animate({
+				opacity: 'toggle',
+				height: 'toggle'
+			},
+				250, function() {
+				// $('.formGroup.buttons').show();
+				
+			});
+		
+	})
 
 $(".listItem").on('click', function (e) {
 	$this = $(this);
