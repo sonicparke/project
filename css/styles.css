@@ -148,15 +148,16 @@ ul {
 .searchForm {
 	position: relative;
 	margin: 30px auto 10px auto;
-	in-height: 325px;
-	order: 2px solid;
+	padding-bottom: 5px;
+	min-height: 35px;
 }
 
 .slide {
 	padding-bottom: 5px;
+	height: 325px;
 }
 
-.hidden {
+hidden {
 	display:none;
 }
 
@@ -246,7 +247,13 @@ button[type=reset]:hover {
 }
 
 .button#openSearch {
-	float: right;
+	position: absolute;
+	top: 0px;
+	right: 20px;
+	font-size: 1em;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
 }
 
 
@@ -410,7 +417,9 @@ form ul.formGroup .listTitle span {
 }
 
 .searchResults h2.listTitle, .ui-dialog-titlebar {
-	padding: 20px 10px;
+	padding: 0 10px;
+	height: 50px;
+	line-height: 50px;
 	font-size: 100%;
 	font-weight: bold;
 	background: #efefef;
@@ -438,7 +447,7 @@ form ul.formGroup .listTitle span {
 
 ****************************************/
 .pagination {
-	margin: 15px 0;
+	margin: 0 0 15px 0;
 }
 
 .pagination a {

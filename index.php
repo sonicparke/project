@@ -55,7 +55,6 @@
                                 <label for="vendors">Product </label><input type="textbox" id="product">
                             </li>
                         </ul>
-
                         <ul class="formGroup buttons">
                             <li>
                                 <input href="#" id="reset" class="button" type="reset" value="RESET" />
@@ -64,14 +63,17 @@
                                 <input href="#" id="submit" class="button" type="submit" value="GO" />
                             </li>
                         </ul>
+                        
                     </div>
+                    
                     <div>
                         
-                         <a href="#" id="openSearch" class="button hidden">Search Again</a>
+                        
 
                     </div>
                    
                 </form>
+                <a href="#" id="openSearch" class="button ">Search Again</a> 
             </div>
             </div>
             <div class="container">
@@ -149,6 +151,9 @@
                 last: "last"
             });
              
+  
+
+
         });
     </script>
   </body>
