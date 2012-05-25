@@ -37,7 +37,7 @@ $(function () {
 	$('#openSearch').on('click', function (e) {
 			$('#openSearch').animate({
 				opacity: 0
-			}, 100);
+			}, 250);
 			$('.slide').animate({
 				opacity: 'toggle',
 				height: 'toggle'
@@ -49,22 +49,23 @@ $(function () {
 		e.stopPropagation();
 	})
 
-$(".listItem").on('click', function (e) {
-	$this = $(this);
-	var vendorID = $this.attr('id');
-	var data = {
-		name: vendorID
-	}
-	// Render Handlebars Template
-	RenderTemplate(data, 'vendorDetail');
-	$(".vendorDetail" ).dialog({
-			height: 140,
-			modal: true,
-			close: function(event, ui) { 
-				$("#vendorDetailTemplateArea").empty();
-				$(".vendorDetail").remove();
-			}
-		});
+	$(".listItem").on('click', function (e) {
+		$this = $(this);
+		var context = $this.closest('.container')
+		var vendorID = $this.attr('id');
+		var data = {
+			name: vendorID
+		}
+		// Render Handlebars Template
+		RenderTemplate(data, 'vendorDetail');
+		$(".vendorDetail" ).dialog({
+				height: 140,
+				modal: true,
+				close: function(event, ui) { 
+					$("#vendorDetailTemplateArea").empty();
+					$(".vendorDetail").remove();
+				}
+			});
 	})
 })();
 

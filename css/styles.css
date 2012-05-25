@@ -380,8 +380,8 @@ form ul.formGroup .listTitle span {
 }
 
 
-/*** RESULTS ELEMENTS ***/
-.container.searchResults {
+/*** LIST RECORDS ELEMENTS ***/
+.container.listRecords {
 	adding-left: 0;
 	adding-right: 0;
 	-webkit-border-radius: 5px;
@@ -389,7 +389,74 @@ form ul.formGroup .listTitle span {
 	border-radius: 5px;
 }
 
-.searchResults li.row {
+.listRecords li.row {
+	width: auto;
+	font-size: 12px;
+}
+
+.listRecords {
+	border: 1px solid #c9c9c9;
+	border-radius: 5px;
+}
+
+.listRecords table {
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.listRecords table tbody td {
+	padding: 10px 0;
+}
+
+.listRecords table thead th:first-child {
+	padding-left: 10px;
+}
+
+.listRecords li {
+	padding: 10px;
+}
+
+.listRecords li.listItem:hover {
+	color: #ffffff;
+	ont-weight: bold;
+	background-color: #3799FF;
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+}
+
+.listRecords li span {
+	display: inline-block;
+}
+
+.listRecords h2.listTitle, .ui-dialog-titlebar {
+	padding: 0 10px;
+	height: 50px;
+	line-height: 50px;
+	font-size: 100%;
+	font-weight: bold;
+	background: #efefef;
+	border-bottom: 1px solid #c9c9c9;	
+}
+
+.listRecords h2.listTitle {
+	-webkit-border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+}
+
+
+/*** RESULTS ELEMENTS ***/
+/*.container.searchResults {
+	adding-left: 0;
+	adding-right: 0;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.searchResults li.row, .searchResults table td {
 	width: auto;
 	font-size: 12px;
 }
@@ -399,11 +466,25 @@ form ul.formGroup .listTitle span {
 	border-radius: 5px;
 }
 
-.searchResults li {
+.searchResults table {
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+
+.searchResults table tbody td {
+	padding: 10px 0;
+}
+
+.searchResults table thead th:first-child, .searchResults table tbody td:first-child {
+	padding-left: 10px;
+}
+
+.searchResults li, .searchResults table tr {
 	padding: 10px;
 }
 
-.searchResults li.listItem:hover {
+.searchResults li.listItem:hover, .searchResults table tr:hover {
 	color: #ffffff;
 	ont-weight: bold;
 	background-color: #3799FF;
@@ -416,7 +497,7 @@ form ul.formGroup .listTitle span {
 	display: inline-block;
 }
 
-.searchResults h2.listTitle, .ui-dialog-titlebar {
+.searchResults h2.listTitle, .ui-dialog-titlebar, .searchResults table thead {
 	padding: 0 10px;
 	height: 50px;
 	line-height: 50px;
@@ -426,11 +507,11 @@ form ul.formGroup .listTitle span {
 	border-bottom: 1px solid #c9c9c9;	
 }
 
-.searchResults h2.listTitle {
+.searchResults h2.listTitle, .searchResults table thead {
 	-webkit-border-radius: 5px 5px 0 0;
 	-moz-border-radius: 5px 5px 0 0;
 	border-radius: 5px 5px 0 0;
-}
+}*/
 
 
 /*** VENDOR DETAIL ***/

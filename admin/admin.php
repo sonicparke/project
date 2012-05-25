@@ -11,16 +11,14 @@
         <h1 class="title">XPO Everything Finder Admin</h1>
     </div>
 
-    <div class="wrapperContent">
-      <div class="ui-widget">
-        <label for="vendors">Vendors: </label><input id="vendors">
-      </div>
-      <div class="ui-widget">
-        <label for="products">Products: </label><input id="products">
-      </div>
-      <div class="ui-widget">
-        <label for="shows">Shows: </label><input id="shows">
-      </div>
+    <div class="wrapperContent adminMain">
+        <div class="container row clearfix">
+            <ul class="menu">
+              <li><a href="vendors.php">Manage Vendors</a></li>
+              <li><a href="shows.php">Manage Shows</a></li>
+              <li><a href="products.php">Manage Products</a></li>
+            </ul>
+        </div>
     </div>
 
 
