@@ -16,7 +16,6 @@ $(function () {
 (function  (params) {
 
 
-	// $('#btnToggle').hide();
 
 
 	$('#submit').on('click', function (e) {
@@ -68,6 +67,18 @@ $(function () {
 			});
 	})
 })();
+
+
+
+// PAGINATION FUNCTION
+function Paginate(elem, pp) {
+	$("div.pagination").jPages({
+        containerID: elem,
+        perPage: pp,
+        first: "first",
+        last: "last"
+    });
+};
 
 
 function RenderTemplate (data, id) {

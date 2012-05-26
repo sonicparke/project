@@ -188,14 +188,8 @@
     <script type="text/javascript" src="js/scripts.js"></script>
     <script>
         $(document).ready(function(e) {
-   
-            /* initiate plugin */
-            $("div.pagination").jPages({
-                containerID: "searchResultsList",
-                perPage: 10,
-                first: "first",
-                last: "last"
-            });
+            Paginate("searchResultsList", 20);
+            
              
   
 

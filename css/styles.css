@@ -242,8 +242,17 @@ a.button {
 	background: #999999;
 }
 
-button[type=reset]:hover {
+.button[type=reset]:hover {
 	background: #444444;
+}
+
+.button[type=cancel] {
+	width: 100px;
+	background: #999999;
+}
+
+.button[type=cancel]:hover {
+	background-color: #cc0000;
 }
 
 .button#openSearch {
@@ -381,6 +390,10 @@ form ul.formGroup .listTitle span {
 
 
 /*** LIST RECORDS ELEMENTS ***/
+.listRecords spanc.onecol {
+	width: 6%;
+}
+
 .container.listRecords {
 	adding-left: 0;
 	adding-right: 0;
@@ -447,79 +460,56 @@ form ul.formGroup .listTitle span {
 }
 
 
-/*** RESULTS ELEMENTS ***/
-/*.container.searchResults {
-	adding-left: 0;
-	adding-right: 0;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
+
+
+
+/*** ADD RECORD STYLE ***/
+.ui-dialog .ui-dialog-titlebar {
+	margin: 0;
+	padding: 0 0 0 10px;
+	height: 35px;
+	line-height: 35px;
+	border: none;
 }
 
-.searchResults li.row, .searchResults table td {
-	width: auto;
-	font-size: 12px;
+.ui-dialog .ui-dialog-title {
+	margin: 0;
+	padding: 0 ;
+	border: none;
 }
 
-.searchResults {
+.ui-dialog .ui-dialog-content {
+	background: #ffffff;
 	border: 1px solid #c9c9c9;
-	border-radius: 5px;
 }
 
-.searchResults table {
-	width: 100%;
-	text-align: left;
-	border-collapse: collapse;
-}
-
-.searchResults table tbody td {
+.ui-dialog .ui-dialog-content form ul.formGroup {
+	margin: 0;
 	padding: 10px 0;
+	background: #ffffff;
+	border: none;
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
 }
 
-.searchResults table thead th:first-child, .searchResults table tbody td:first-child {
-	padding-left: 10px;
+.ui-dialog .row {
+	min-width: 425px;
 }
 
-.searchResults li, .searchResults table tr {
-	padding: 10px;
+.ui-dialog .row .sixcol {
+	width: 100%;
 }
-
-.searchResults li.listItem:hover, .searchResults table tr:hover {
-	color: #ffffff;
-	ont-weight: bold;
-	background-color: #3799FF;
-	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
-	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
-	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
-}
-
-.searchResults li span {
-	display: inline-block;
-}
-
-.searchResults h2.listTitle, .ui-dialog-titlebar, .searchResults table thead {
-	padding: 0 10px;
-	height: 50px;
-	line-height: 50px;
-	font-size: 100%;
-	font-weight: bold;
-	background: #efefef;
-	border-bottom: 1px solid #c9c9c9;	
-}
-
-.searchResults h2.listTitle, .searchResults table thead {
-	-webkit-border-radius: 5px 5px 0 0;
-	-moz-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
-}*/
 
 
 /*** VENDOR DETAIL ***/
-.vendorDetail {
+vendorDetail {
 	display: none;
 }
 
-
+.hidden {
+	display: none;
+}
 
 /**************************************** 
 
