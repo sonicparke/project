@@ -1,24 +1,60 @@
 //ADMIN STUFF
 (function  () {
 	//CREATE THE ADD VENDOR FORM DIALOG
-	CreateFormDialog({
-        trigger: '#addVendor',
-        popupContainer: '#addNewRecordPopup',
-        title: 'Add New Vendor'
-    });
+	$('#addVendor').on('click', function (e) {
+		CreateFormDialog({
+			popupContainer: '#addNewRecordPopup',
+			title: 'Add New Vendor'
+		})
+		e.stopPropagation();
+		e.preventDefault();
+	})
+
 	//CREATE THE EDIT VENDOR FORM DIALOG
-	CreateFormDialog({
-        trigger: '.listItem' + id,
-        popupContainer: '#addNewRecordPopup',
-        title: 'Edit Vendor'
-    });
+	$('.editVendor').on('click', function (e) {
+		var thisID = $(this).closest('li').attr('id');
+		CreateFormDialog({
+			popupContainer: '#addNewRecordPopup',
+			title: 'Edit Vendor ' + thisID
+		})
+		e.stopPropagation();
+		e.preventDefault();
+	})
+
+	//CREATE THE EDIT SHOW FORM DIALOG
+	$('.editVendorProducts').on('click', function (e) {
+		var thisID = $(this).closest('li').attr('id');
+		CreateFormDialog({
+			popupContainer: '#addNewRecordPopup',
+			title: 'Edit Products for Vendor ' + thisID
+		})
+		e.stopPropagation();
+		e.preventDefault();
+	})
+
+	//CREATE THE EDIT PRODUCT FORM DIALOG
+	$('.editVendorShows').on('click', function (e) {
+		var thisID = $(this).closest('li').attr('id');
+		CreateFormDialog({
+			popupContainer: '#addNewRecordPopup',
+			title: 'Edit Shows for Vendor ' + thisID
+		})
+		e.stopPropagation();
+		e.preventDefault();
+	})
+
+	//CREATE THE DELETE FORM DIALOG
+	$('.delete').on('click', function (e) {
+		var thisID = $(this).closest('li').attr('id');
+		console.log('deleted');
+		e.stopPropagation();
+		e.preventDefault();
+	})
 
 })();
 
 // CREATE FORM DIALOGS
 function CreateFormDialog(params) {
-	// CREATE NEW VENDOR CLICK EVENT
-	$(params.trigger).on('click', function (e) {
 		$(params.popupContainer).dialog({
 			title: params.title,
 			width: 640,
@@ -31,5 +67,4 @@ function CreateFormDialog(params) {
 			console.log('clicked close')
 			$(params.popupContainer).dialog('close');
 		})
-	})
 };

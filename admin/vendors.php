@@ -13,191 +13,109 @@
     </div>
 
     <div class="wrapperContent vendors">
-        <div><a id="addVendor" class="button" href="#">Add New Vendor</a></div>
+        
         <div class="container">
+                <a id="addVendor" class="button addNewRecord" href="#">Add New Vendor</a>
                 <div class="pagination"></div>
                 <div id="listVendors" class="listRecords">
                     <h2 class="row listTitle">
-                        <span class="onecol col1" >Company Name</span>
-                        <span class="onecol col2">Contact Name</span>
-                        <span class="onecol col3">Address</span>
-                        <span class="onecol col4">City</span>
-                        <span class="onecol col5">State</span>
-                        <span class="onecol col6">Zip</span>
-                        <span class="onecol col7">Country</span>
-                        <span class="onecol col8">Phone</span>
-                        <span class="onecol col9">Fax</span>
-                        <span class="onecol col10">Email</span>
-                        <span class="onecol col11">Website</span>
+                            <span class="twocol col1">Company Name</span>
+                            <span class="twocol col2">Contact Name</span>
+                            <span class="onecol col3">Phone</span>
+                            <span class="twocol col4">Email</span>
+                            <span class=" col5">Manage Vendor Details</span>
                     </h2>
                     <ul>
                         <li class="row listItem" id="1">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="2">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="3">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="4">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="5">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="6">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="7">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="8">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="9">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="10">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
-                        </li><li class="row listItem" id="11">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
+                        </li>
+                        <li class="row listItem" id="11">
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="12">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="13">
-                            <span class="onecol col1" >Company Name</span>
-                            <span class="onecol col2">Contact Name</span>
-                            <span class="onecol col3">Address</span>
-                            <span class="onecol col4">City</span>
-                            <span class="onecol col5">State</span>
-                            <span class="onecol col6">Zip</span>
-                            <span class="onecol col7">Country</span>
-                            <span class="onecol col8">Phone</span>
-                            <span class="onecol col9">Fax</span>
-                            <span class="onecol col10">Email</span>
-                            <span class="onecol col11">Website</span>
+                            <span class="twocol col1">ACME Brick Company</span>
+                            <span class="twocol col2">Anthony Michael Hall</span>
+                            <span class="onecol col3">918-555-1212</span>
+                            <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class=" col5"><a href="#" id="" class="editVendor button">Edit</a><a href="#" id="" class="button editVendorProducts">Products</a><a href="#" id="" class="button editVendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                     </ul>
                 </div>
@@ -260,6 +178,54 @@
         </div>
     </div>
 
+    <div id="productsPopup" class="container hidden row">
+            <form>
+                    <ul class="formGroup sixcol vendors">
+                        <li>
+                            <label for="vendorName">Company Name</label><input type="textbox" id="vendorName">
+                        </li>
+                        <li>
+                            <label for="vendorContactName">Contact Name</label><input type="textbox" id="vendorContactName">
+                        </li>
+                        <li>
+                            <label for="vendorAddress">Address</label><input type="textbox" id="vendorAddress">
+                        </li>
+                        <li>
+                            <label for="vendorCity">City</label><input type="textbox" id="vendorCity">
+                        </li>
+                        <li>
+                            <label for="vendorState">State</label><input type="textbox" id="vendorState">
+                        </li>
+                        <li>
+                            <label for="vendorZip">Zip</label><input type="textbox" id="vendorZip">
+                        </li>
+                        <li>
+                            <label for="vendorCountry">Country</label><input type="textbox" id="vendorCountry">
+                        </li>
+                        <li>
+                            <label for="vendorPhone">Phone</label><input type="textbox" id="vendorPhone">
+                        </li>
+                        <li>
+                            <label for="vendorFax">Fax</label><input type="textbox" id="vendorFax">
+                        </li>
+                        <li>
+                            <label for="vendorEmail">Email</label><input type="textbox" id="vendorEmail">
+                        </li>
+                        <li>
+                            <label for="vendorURL">Website</label><input type="textbox" id="vendorURL">
+                        </li>
+                    </ul>
+                    <ul class="formGroup buttons">
+                        <li>
+                            <input href="#" id="reset" class="button" type="cancel" value="CANCEL" />
+                        </li>
+                        <li>    
+                            <input href="#" id="submit" class="button" type="submit" value="SAVE" />
+                        </li>
+                    </ul>          
+            </form>
+        </div>
+
 
     <script type="text/x-Handlebars-tmpl" id="vendorDetailTemplate">
         <div  class="vendorDetail" title="{{name}}">
@@ -282,7 +248,7 @@
     <script>
         $(document).ready(function(e) {
             Paginate("listVendors ul", 5);
-            
+
         });
     </script>
   </body>

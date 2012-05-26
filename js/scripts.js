@@ -48,7 +48,7 @@ $(function () {
 		e.stopPropagation();
 	})
 
-	$(".listItem").on('click', function (e) {
+	$("#searchResultsList li").on('click', function (e) {
 		$this = $(this);
 		var context = $this.closest('.container')
 		var vendorID = $this.attr('id');

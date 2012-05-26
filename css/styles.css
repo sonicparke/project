@@ -145,6 +145,10 @@ ul {
 	list-style-type: none;
 }
 
+.vendors, .shows, .products {
+	padding-top: 20px;
+}
+
 .searchForm {
 	position: relative;
 	margin: 30px auto 10px auto;
@@ -157,9 +161,10 @@ ul {
 	height: 325px;
 }
 
-hidden {
-	display:none;
+.hidden {
+	display: none;
 }
+
 
 
 /***** HEADER *****/
@@ -265,6 +270,20 @@ a.button {
 	filter:alpha(opacity=0);
 }
 
+.button.addNewRecord {
+	display: inline-block;
+	float: right;
+}
+
+.listRecords .listItem .button {
+	margin-right: 25px;
+	font-size: 10px;
+}
+
+.button.delete:hover {
+	color: #ffffff;
+	background: #cc0000;
+}
 
 /*** FORM ELEMENTS ***/
 .searchForm form {
@@ -390,7 +409,7 @@ form ul.formGroup .listTitle span {
 
 
 /*** LIST RECORDS ELEMENTS ***/
-.listRecords spanc.onecol {
+.listRecords span.onecol {
 	width: 6%;
 }
 
@@ -428,11 +447,13 @@ form ul.formGroup .listTitle span {
 
 .listRecords li {
 	padding: 10px;
+	line-height: 25px;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .listRecords li.listItem:hover {
 	color: #ffffff;
-	ont-weight: bold;
 	background-color: #3799FF;
 	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
 	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
@@ -441,6 +462,8 @@ form ul.formGroup .listTitle span {
 
 .listRecords li span {
 	display: inline-block;
+	overflow: hidden;
+	white-space: nowrap;
 }
 
 .listRecords h2.listTitle, .ui-dialog-titlebar {
@@ -459,8 +482,50 @@ form ul.formGroup .listTitle span {
 	border-radius: 5px 5px 0 0;
 }
 
+.vendors .listRecords li.listItem:hover, .products .listRecords li.listItem:hover {
+	color: #272727;
+	background-color: #efefef;
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+}
+
+.shows .listRecords ul li {
+	font-weight: bold;
+}
 
 
+.shows .listRecords ul.subGroup li {
+	padding: 5px 0 5px 5px;
+	font-weight: normal;
+}
+
+.shows .listRecords ul.subGroup li:last-child {
+	margin-bottom: 20px;
+}
+
+.shows .listRecords ul.subGroup li:first-child {
+	margin-top: 5px;
+}
+
+.shows .listRecords li.listItem:hover {
+	color: #272727;
+	background-color: #FDFDFD;
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+}
+
+.shows .listRecords li.listItem .subGroup li:hover {
+	color: #272727;
+	background-color: #efefef;
+	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
+	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
 
 
 /*** ADD RECORD STYLE ***/
@@ -507,9 +572,6 @@ vendorDetail {
 	display: none;
 }
 
-.hidden {
-	display: none;
-}
 
 /**************************************** 
 
@@ -519,6 +581,7 @@ vendorDetail {
 ****************************************/
 .pagination {
 	margin: 0 0 15px 0;
+	clear: both;
 }
 
 .pagination a {
