@@ -3,20 +3,21 @@
   <head>
     <meta charset="UTF-8">
     <title>XPO Everything Finder Admin</title>
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../css/jQuery-UI/jquery-ui-1.8.20.custom.css">
+    <link rel="stylesheet" type="text/css" href="../css/styles.css">
   </head>
   <body>
     <div class="header">
-        <img src="images/logomergeb.gif" alt="XPO Press" />
+        <img src="../images/logomergeb.gif" alt="XPO Press" />
         <h1 class="title">XPO Everything Finder Admin</h1>
     </div>
 
     <div class="wrapperContent adminMain">
         <div class="container row clearfix">
             <ul class="menu">
-              <li><a href="vendors.php">Manage Vendors</a></li>
-              <li><a href="shows.php">Manage Shows</a></li>
-              <li><a href="products.php">Manage Products</a></li>
+              <li><a href="vendors.php" class="button">Manage Vendors</a></li>
+              <li><a href="shows.php" class="button">Manage Shows</a></li>
+              <li><a href="products.php" class="button">Manage Products</a></li>
             </ul>
         </div>
     </div>
