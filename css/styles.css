@@ -704,10 +704,17 @@ form ul.formGroup li.datepicker input:last-child {
 
 
 
+/*** ADMIN MENU ***/
+#admin ul.menu {
+	margin-top: 50px;
 
+}
 
+#admin ul.menu li {
+	display: inline-block;
+	margin: 20px;
 
-
+}
 
 
 

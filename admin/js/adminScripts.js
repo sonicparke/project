@@ -5,15 +5,14 @@
 		// var recordType = 'vendor'
 		// var recordType = $('div.wrapperContent').attr('title');
 		var recordType = $('body').attr('id');
-		console.log(recordType)
 		$('#' + recordType + ' .addNewRecord').on('click', function (e) {
 			CreateFormDialog({
 				popupContainer: '#addNewRecordPopup',
 				title: 'Add New ' + recordType
-			})
+			});
 			e.stopPropagation();
 			e.preventDefault();
-		})
+		});
 
 
 		$('.edit').on('click', function (e) {
@@ -21,20 +20,10 @@
 			CreateFormDialog({
 				popupContainer: '#addNewRecordPopup',
 				title: 'Edit ' + recordType + ' ' + thisID
-			})
+			});
 			e.stopPropagation();
 			e.preventDefault();
-		})
-
-		//CREATE THE ADD VENDOR FORM DIALOG
-		// $('.vendors .addNewRecord').on('click', function (e) {
-		// 	CreateFormDialog({
-		// 		popupContainer: '#addNewRecordPopup',
-		// 		title: 'Add New Vendor'
-		// 	})
-		// 	e.stopPropagation();
-		// 	e.preventDefault();
-		// })
+		});
 
 		//CREATE THE EDIT VENDOR FORM DIALOG
 		$('.editVendor').on('click', function (e) {
@@ -42,10 +31,10 @@
 			CreateFormDialog({
 				popupContainer: '#addNewRecordPopup',
 				title: 'Edit Vendor ' + thisID
-			})
+			});
 			e.stopPropagation();
 			e.preventDefault();
-		})
+		});
 
 		//CREATE THE EDIT PRODUCT FORM DIALOG
 		$('.editVendorProducts').on('click', function (e) {
@@ -53,10 +42,10 @@
 			CreateFormDialog({
 				popupContainer: '#addNewRecordPopup',
 				title: 'Edit Products for Vendor ' + thisID
-			})
+			});
 			e.stopPropagation();
 			e.preventDefault();
-		})
+		});
 
 		//CREATE THE EDIT SHOW FORM DIALOG
 		$('.editVendorShows').on('click', function (e) {
@@ -64,54 +53,13 @@
 			CreateFormDialog({
 				popupContainer: '#addNewRecordPopup',
 				title: 'Edit Shows for Vendor ' + thisID
-			})
+			});
 			e.stopPropagation();
 			e.preventDefault();
-		})
+		});
 
 
-	// SHOWS PAGE
-		//CREATE THE ADD NEW SHOW FORM DIALOG
-		// $('.shows .addNewRecord').on('click', function (e) {
-		// 	CreateFormDialog({
-		// 		popupContainer: '#addNewRecordPopup',
-		// 		title: 'Add New Show'
-		// 	})
-		// 	e.stopPropagation();
-		// 	e.preventDefault();
-		// })
-		//CREATE THE EDIT SHOW FORM DIALOG
-		// $('.editShow').on('click', function (e) {
-		// 	var thisID = $(this).closest('li').attr('id');
-		// 	CreateFormDialog({
-		// 		popupContainer: '#addNewRecordPopup',
-		// 		title: 'Edit Show ' + thisID
-		// 	})
-		// 	e.stopPropagation();
-		// 	e.preventDefault();
-		// })
 
-
-	//PRODUCTS PAGE
-		//CREATE THE ADD NEW PRODUCT FORM DIALOG
-		// $('.products .addNewRecord').on('click', function (e) {
-		// 	CreateFormDialog({
-		// 		popupContainer: '#addNewRecordPopup',
-		// 		title: 'Add New Product'
-		// 	})
-		// 	e.stopPropagation();
-		// 	e.preventDefault();
-		// })
-		//CREATE THE EDIT PRODUCT FORM DIALOG
-		// $('.editProduct').on('click', function (e) {
-		// 	var thisID = $(this).closest('li').attr('id');
-		// 	CreateFormDialog({
-		// 		popupContainer: '#addNewRecordPopup',
-		// 		title: 'Edit Product ' + thisID
-		// 	})
-		// 	e.stopPropagation();
-		// 	e.preventDefault();
-		// })
 
 
 
@@ -139,10 +87,10 @@
 				}
 			}
 
-		})
+		});
 		e.stopPropagation();
 		e.preventDefault();
-	})
+	});
 
 	//ADD THE JQUERY UI DATEPICKER
 	$('.datepicker input').datepicker();
@@ -160,7 +108,7 @@ function CreateFormDialog(params) {
 			}
 		});
 		$('.button[type=cancel]').on('click', function (e) {
-			console.log('clicked close')
+			console.log('clicked close');
 			$(params.popupContainer).dialog('close');
-		})
-};
+		});
+}
