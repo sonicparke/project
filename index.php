@@ -26,13 +26,13 @@
                                 <label for="vendors">Name </label><input type="textbox" id="vendor">
                             </li>
                             <li>
-                                <label for="vendors">City </label><input type="textbox" id="companycity">
+                                <label for="vendors">City </label><input type="textbox" id="company_city">
                             </li>
                             <li>
-                                <label for="vendors">State </label><input type="textbox" id="companystate">
+                                <label for="vendors">State </label><input type="textbox" id="company_state">
                             </li>
                             <li>
-                                <label for="vendors">Country </label><input type="textbox" id="companycountry">
+                                <label for="vendors">Country </label><input type="textbox" id="company_country">
                             </li>
                         </ul>
                         <ul class="formGroup fourcol shows">
@@ -40,10 +40,10 @@
                                 <span>Search for the name of the show and the city where it is located.</span>
                             </li>
                             <li>
-                                <label for="vendors">City </label><input type="textbox" id="showcity">
+                                <label for="vendors">City </label><input type="textbox" id="show_city">
                             </li>
                             <li>
-                                <label for="vendors">Name </label><input type="textbox" id="showname">
+                                <label for="vendors">Name </label><input type="textbox" id="show_name">
                             </li>
                         </ul>
                         

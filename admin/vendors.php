@@ -23,6 +23,7 @@
                             <span class="twocol col2">Contact Name</span>
                             <span class="onecol col3">Phone</span>
                             <span class="twocol col4">Email</span>
+                            <span class="onecol col5">Level</span>
                             <span class=" col5">Manage Vendor Details</span>
                     </h2>
                     <ul>
@@ -31,6 +32,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="2">
@@ -38,6 +40,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="3">
@@ -45,6 +48,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="4">
@@ -52,6 +56,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="5">
@@ -59,6 +64,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="6">
@@ -66,6 +72,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="7">
@@ -73,6 +80,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="8">
@@ -80,6 +88,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="9">
@@ -87,6 +96,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="10">
@@ -94,6 +104,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="11">
@@ -101,6 +112,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="12">
@@ -108,6 +120,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                         <li class="row listItem" id="13">
@@ -115,6 +128,7 @@
                             <span class="twocol col2">Anthony Michael Hall</span>
                             <span class="onecol col3">918-555-1212</span>
                             <span class="twocol col4">amhall@acmebrick.com</span>
+                            <span class="onecol col5">3</span>
                             <span class=" col5"><a href="#" id="" class="editvendor button">Edit</a><a href="#" id="" class="button editvendorProducts">Products</a><a href="#" id="" class="button editvendorShows">Shows</a><a href="#" id="" class="button delete">Delete</a></span>
                         </li>
                     </ul>
@@ -136,19 +150,29 @@
                         <label for="vendorContactName">Contact Name</label><input type="textbox" id="vendorContactName">
                     </li>
                     <li>
+                        <label for="membershipLevel">Membership Level</label>
+                        <select id="membershipLevel">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </li>
+                    <li>
                         <label for="vendorAddress">Address</label><input type="textbox" id="vendorAddress">
                     </li>
                     <li>
                         <label for="vendorCity">City</label><input type="textbox" id="vendorCity">
                     </li>
                     <li>
-                        <label for="vendorState">State</label><input type="textbox" id="vendorState">
+                        <label for="vendorState">State</label><input name="state" type="textbox" id="vendorState">
                     </li>
                     <li>
                         <label for="vendorZip">Zip</label><input type="textbox" id="vendorZip">
                     </li>
                     <li>
-                        <label for="vendorCountry">Country</label><input type="textbox" id="vendorCountry">
+                        <label for="vendorCountry">Country</label><input NAME="country" type="textbox" id="vendorCountry">
                     </li>
                     <li>
                         <label for="vendorPhone">Phone</label><input type="textbox" id="vendorPhone">

@@ -281,7 +281,7 @@ a.button {
 }
 
 .listItem .button {
-	margin-right: 25px;
+	margin-right: 10px;
 	font-size: 10px;
 }
 
@@ -298,7 +298,7 @@ label {
 	font-size: 14px;
 }
 
-input[type=textbox] {
+input[type=textbox], select {
 	font-size: 18px;
 	padding: 5px 0 5px 10px;
 	width: 76%;
@@ -307,6 +307,11 @@ input[type=textbox] {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	outline: none;
+}
+
+select {
+	padding: 0 0 0 5px;
+	width: auto;
 }
 
 .boxed input[type=textbox], .boxed textarea {
@@ -411,6 +416,10 @@ form ul.formGroup li.datepicker input:last-child {
 	margin-right: 0;
 }
 
+form li.disabled input {
+	background: #c9c9c9;
+	color: #999;
+}
 
 
 /*** LIST RECORDS ELEMENTS ***/

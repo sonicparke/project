@@ -109,6 +109,6 @@ function CreateFormDialog(params) {
 		});
 		$('.button[type=cancel]').on('click', function (e) {
 			console.log('clicked close');
-			$(params.popupContainer).dialog('close');
+			$(params.popupContainer).dialog('close').find('select').val('1');
 		});
 }
