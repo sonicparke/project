@@ -13,6 +13,7 @@ $(function () {
 			select: function( event, ui ) {
 				var inputID = "#" + $(this).attr('id');
 				$(inputID).parent().nextUntil('.formGroup').addClass('disabled');
+				$(inputID).val(ui.item.label)
 				// log( ui.item ?
 				// 	"Selected: " + ui.item.value + " aka " + ui.item.id :
 				// 	"Nothing selected, input was " + this.value );
