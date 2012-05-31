@@ -189,11 +189,6 @@
     <script>
         $(document).ready(function(e) {
             Paginate("searchResultsList", 20);
-            
-             
-  
-
-
         });
     </script>
   </body>
