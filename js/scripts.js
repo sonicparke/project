@@ -7,7 +7,7 @@ $(function () {
         id = ids[i];
         // alert("Adding getoptions.php?category=" + id + " to #" + id);
         $("#" + id).autocomplete({
-            source: "http://danfulbright.com/xpo/search.php?" + id + "_search=",
+            source: "ajaxsearch.php?" + id + "_search=",
             // source: "ajaxsearch.php?category=" + show + "&field=" + name + "&term="
             minLength: 2,
 			select: function( event, ui ) {
