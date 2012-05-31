@@ -2,12 +2,12 @@
 $(function () {
     "use strict";
     var i, id, ids;
-    ids = ["show_city", "show_name", "vendor", "company_city", "company_state", "company_country", "product"];
+    ids = ["show_city", "show_name", "vendor_name", "vendor_city", "vendor_state", "vendor_country", "product_name"];
     for (i = 0; i < ids.length; i++) {
         id = ids[i];
         // alert("Adding getoptions.php?category=" + id + " to #" + id);
         $("#" + id).autocomplete({
-            source: "ajaxsearch.php?" + id + "_search=",
+            source: "search/ajaxsearch.php?field=" + id,
             // source: "ajaxsearch.php?category=" + show + "&field=" + name + "&term="
             minLength: 2,
 			select: function( event, ui ) {

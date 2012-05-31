@@ -3,9 +3,15 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', TRUE);
 ini_set('html_errors', FALSE);
 
-$category = @$_REQUEST['category'];
+// $category = @$_REQUEST['category'];
+$category = NULL;
 $field = @$_REQUEST['field'];
 $term = @$_REQUEST['term'];
+
+$field_parts = explode('_', $field, 2);
+if (count($field_parts) === 2) {
+  list ($category, $field) = $field_parts;
+}
 
 // echo "\$category=$category, \$field=$field, \$term=$term\n";
 

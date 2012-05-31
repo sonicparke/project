@@ -23,16 +23,16 @@
                                 <span>Search for a company you're hoping to find at a show.</span>
                             </li>
                             <li>
-                                <label for="vendors">Name </label><input type="textbox" id="vendor">
+                                <label for="vendors">Name </label><input type="textbox" id="vendor_name">
                             </li>
                             <li>
-                                <label for="vendors">City </label><input type="textbox" id="company_city">
+                                <label for="vendors">City </label><input type="textbox" id="vendor_city">
                             </li>
                             <li>
-                                <label for="vendors">State </label><input type="textbox" id="company_state">
+                                <label for="vendors">State </label><input type="textbox" id="vendor_state">
                             </li>
                             <li>
-                                <label for="vendors">Country </label><input type="textbox" id="company_country">
+                                <label for="vendors">Country </label><input type="textbox" id="vendor_country">
                             </li>
                         </ul>
                         <ul class="formGroup fourcol shows">
@@ -52,7 +52,7 @@
                                 <span>Search for products you want to locate at a show.</span>
                             </li>
                             <li>
-                                <label for="vendors">Product </label><input type="textbox" id="product">
+                                <label for="vendors">Product </label><input type="textbox" id="product_name">
                             </li>
                         </ul>
                         <ul class="formGroup buttons">
