@@ -30,9 +30,7 @@
     <script type="text/javascript" src="js/scripts.js"></script>
     <script>
         $(document).ready(function(e) {
-            var params = {
-                test: 'Hi'
-            }
+
         });
     </script>
   </body>

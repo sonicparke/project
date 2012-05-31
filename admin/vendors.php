@@ -268,7 +268,6 @@
     <script>
         $(document).ready(function(e) {
             Paginate("listVendors ul", 5);
-
         });
     </script>
   </body>

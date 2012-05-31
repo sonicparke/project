@@ -78,49 +78,6 @@
             </div>
             <div class="container">
                 <div class="pagination"></div>
-                
-               <!--  <div class="searchResults">
-                    <table id="searchResultsList">
-                        <thead>
-                            <tr>
-                                <th scope="col" >Company Name</th>
-                                <th scope="col">Address</th>
-                                <th scope="col">City, ST, Zip</th>
-                                <th scope="col">Phone</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Web</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td scope="col" >Company Name</td>
-                                <td scope="col">Address</td>
-                                <td scope="col">City, ST, Zip</td>
-                                <td scope="col">Phone</td>
-                                <td scope="col">Email</td>
-                                <td scope="col">Web</td>
-                            </tr>
-                            <tr>
-                                <td scope="col" >Company Name</td>
-                                <td scope="col">Address</td>
-                                <td scope="col">City, ST, Zip</td>
-                                <td scope="col">Phone</td>
-                                <td scope="col">Email</td>
-                                <td scope="col">Web</td>
-                            </tr>
-                            <tr>
-                                <td scope="col" >Company Name</td>
-                                <td scope="col">Address</td>
-                                <td scope="col">City, ST, Zip</td>
-                                <td scope="col">Phone</td>
-                                <td scope="col">Email</td>
-                                <td scope="col">Web</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div> -->
-               
-
                 <div class="listRecords searchResults">
                     <h2 class="row listTitle"><span class="twocol col1 ">Company Name</span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></h2>
                     <ul id="searchResultsList">
@@ -157,7 +114,6 @@
                         <li class="row listItem" id=""><span class="twocol col1" >Company Name</span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
                     </ul>
                 </div>
-                
                 <div class="pagination"></div>
             </div>
 
