@@ -8,6 +8,7 @@ $(function () {
         // alert("Adding getoptions.php?category=" + id + " to #" + id);
         $("#" + id).autocomplete({
             source: "http://danfulbright.com/xpo/search.php?" + id + "_search=",
+            // source: "ajaxsearch.php?category=" + show + "&field=" + name + "&term="
             minLength: 2,
 			select: function( event, ui ) {
 				var inputID = "#" + $(this).attr('id');
@@ -19,6 +20,16 @@ $(function () {
         });
     }
 });
+
+ids = [{
+	name: "show_city",
+	category: "show",
+	field: "city"
+	},{
+	name: "show_name",
+	category: "show",
+	field: "name"
+	} ];
 
 // SLIDING FORM
 (function  (params) {
