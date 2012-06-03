@@ -60,14 +60,11 @@
 
 
 
-
-
-
-
 	//CREATE THE DELETE FORM DIALOG
 	$('.delete').on('click', function (e) {
 		var thisID = $(this).closest('li').attr('id');
-		$('body').append('<div class="warning hidden"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This item will be <strong>permanently deleted</strong> and cannot be recovered. Are you sure?</p></div>');
+		var btnHTML = '<div class="warning hidden"><p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>This item will be <strong>permanently deleted</strong> and cannot be recovered. Are you sure?</p></div>';
+		$('body').append(btnHTML);
 		$('.warning').dialog({
 			title: 'Warning!',
 			resizable: false,
@@ -78,8 +75,9 @@
 				"Delete Item": function() {
 					$( this ).dialog( "close" );
 					$('#' + thisID).remove();
-					console.log('deleted ' + recordType + ': ', thisID );
 					$(this).remove();
+					$("#listRecords ul").jPages("destroy");
+					Paginate("listRecords > ul", 5);
 				},
 				Cancel: function() {
 					$( this ).dialog( "close" );

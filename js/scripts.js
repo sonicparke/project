@@ -122,6 +122,8 @@ function RenderTemplate(data, id) {
 
 // PAGINATION FUNCTION
 function Paginate(elem, pp) {
+    console.log('pagination generated')
+    console.log(elem, pp)
     $("div.pagination").jPages({
         containerID: elem,
         perPage: pp,

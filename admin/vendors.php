@@ -8,16 +8,16 @@
   </head>
   <body id="vendor">
     <div class="header">
-        <img src="../images/logomergeb.gif" alt="XPO Press" />
+        <img src="../images/logo.png" alt="XPO Press" />
         <h1 class="title">XPO Everything Finder Admin</h1>
     </div>
-
+    <a href="#" id="testclick">test</a>
     <div class="wrapperContent admin">
         
         <div class="container">
                 <a id="addVendor" class="button addNewRecord" href="#">Add New Vendor</a>
                 <div class="pagination"></div>
-                <div id="listVendors" class="listRecords">
+                <div id="listRecords" class="listRecords">
                     <h2 class="row listTitle">
                             <span class="twocol col1">Company Name</span>
                             <span class="twocol col2">Contact Name</span>
@@ -267,7 +267,7 @@
     <script type="text/javascript" src="js/adminScripts.js"></script>
     <script>
         $(document).ready(function(e) {
-            Paginate("listVendors ul", 5);
+            Paginate("listRecords > ul", 5);
         });
     </script>
   </body>

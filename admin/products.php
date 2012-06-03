@@ -8,7 +8,7 @@
   </head>
   <body id="product">
     <div class="header">
-        <img src="../images/logomergeb.gif" alt="XPO Press" />
+        <img src="../images/logo.png" alt="XPO Press" />
         <h1 class="title">XPO Everything Finder Admin</h1>
     </div>
 
@@ -17,7 +17,7 @@
         <div class="container">
                 <a id="addVendor" class="button addNewRecord" href="#">Add New Product</a>
                 <div class="pagination"></div>
-                <div id="listProducts" class="listRecords">
+                <div id="listRecords" class="listRecords">
                     <h2 class="row listTitle">
                             <span class="ninecol col1" >Product Name</span>
                             <span class=" col5">Manage Product Details</span>
@@ -117,7 +117,7 @@
     <script type="text/javascript" src="js/adminScripts.js"></script>
     <script>
         $(document).ready(function(e) {
-            Paginate("listProducts ul", 5);
+           Paginate("listRecords > ul", 5);
         });
     </script>
   </body>
