@@ -3,20 +3,20 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', TRUE);
 ini_set('html_errors', FALSE);
 
-$show_id = @$_REQUEST['show_id'];
-$show_name_search = @$_REQUEST['show_name_search'];
-$show_city_search = @$_REQUEST['show_city_search'];
+$show_id = (int) @$_REQUEST['show_id'];
+$show_name = @$_REQUEST['show_name'];
+$show_city = @$_REQUEST['show_city'];
 
-$vendor_id = @$_REQUEST['vendor_id'];
-$vendor_name_search = @$_REQUEST['vendor_name_search'];
-$vendor_city_search = @$_REQUEST['vendor_city_search'];
-$vendor_state_search = @$_REQUEST['vendor_state_search'];
-$vendor_country_search = @$_REQUEST['vendor_country_search'];
+$vendor_id = (int) @$_REQUEST['vendor_id'];
+$vendor_name = @$_REQUEST['vendor_name'];
+$vendor_city = @$_REQUEST['vendor_city'];
+$vendor_state = @$_REQUEST['vendor_state'];
+$vendor_country = @$_REQUEST['vendor_country'];
 
-$product_id = @$_REQUEST['product_id'];
-$product_name_search = @$_REQUEST['product_name_search'];
+$product_id = (int) @$_REQUEST['product_id'];
+$product_name = @$_REQUEST['product_name'];
 
-if ($show_id or $vendor_id or $product_id or "$show_name_search$show_city_search$vendor_name_search$vendor_city_search$vendor_state_search$vendor_country_search$product_name_search") {
+if ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$vendor_city$vendor_state$vendor_country$product_name") {
   require_once('../inc/db.inc.php');
   require_once('../inc/search.inc.php');
   if (@$_REQUEST['format'] === 'debug') {
@@ -33,10 +33,10 @@ if ($show_id or $vendor_id or $product_id or "$show_name_search$show_city_search
     $where[] = "`shows`.`id` = :show_id";
     $params[] = 'show_id';
   } else {
-    if ($show_name_search) {
-      $where[] = "`shows`.`name` LIKE :show_name_search";
-      $params[] = 'show_name_search';
-      $show_name_search = "%$show_name_search%";
+    if ($show_name) {
+      $where[] = "`shows`.`name` LIKE :show_name";
+      $params[] = 'show_name';
+      $show_name = "%$show_name%";
     }
   }
 
@@ -44,10 +44,10 @@ if ($show_id or $vendor_id or $product_id or "$show_name_search$show_city_search
     $where[] = "`products`.`id` = :product_id";
     $params[] = 'product_id';
   } else {
-    if ($product_name_search) {
-      $where[] = "`products`.`name` LIKE :product_name_search";
-      $params[] = 'product_name_search';
-      $product_name_search = "%$product_name_search%";
+    if ($product_name) {
+      $where[] = "`products`.`name` LIKE :product_name";
+      $params[] = 'product_name';
+      $product_name = "%$product_name%";
     }
   }
 
@@ -55,25 +55,25 @@ if ($show_id or $vendor_id or $product_id or "$show_name_search$show_city_search
     $where[] = "`vendors`.`id` = :vendor_id";
     $params[] = 'vendor_id';
   } else {
-    if ($vendor_name_search) {
-      $where[] = "`vendors`.`name` LIKE :vendor_name_search";
-      $params[] = 'vendor_name_search';
-      $vendor_name_search = "%$vendor_name_search%";
+    if ($vendor_name) {
+      $where[] = "`vendors`.`name` LIKE :vendor_name";
+      $params[] = 'vendor_name';
+      $vendor_name = "%$vendor_name%";
     }
-    if ($vendor_city_search) {
-      $where[] = "`vendors`.`city` LIKE :vendor_city_search";
-      $params[] = 'vendor_city_search';
-      $vendor_city_search = "%$vendor_city_search%";
+    if ($vendor_city) {
+      $where[] = "`vendors`.`city` LIKE :vendor_city";
+      $params[] = 'vendor_city';
+      $vendor_city = "%$vendor_city%";
     }
-    if ($vendor_state_search) {
-      $where[] = "`vendors`.`state` LIKE :vendor_state_search";
-      $params[] = 'vendor_state_search';
-      $vendor_state_search = "%$vendor_state_search%";
+    if ($vendor_state) {
+      $where[] = "`vendors`.`state` LIKE :vendor_state";
+      $params[] = 'vendor_state';
+      $vendor_state = "%$vendor_state%";
     }
-    if ($vendor_country_search) {
-      $where[] = "`vendors`.`country` LIKE :vendor_country_search";
-      $params[] = 'vendor_country_search';
-      $vendor_country_search = "%$vendor_country_search%";
+    if ($vendor_country) {
+      $where[] = "`vendors`.`country` LIKE :vendor_country";
+      $params[] = 'vendor_country';
+      $vendor_country = "%$vendor_country%";
     }
   }
 
@@ -87,12 +87,25 @@ if ($show_id or $vendor_id or $product_id or "$show_name_search$show_city_search
     }
 
     $stmt->execute();
-    // $result = $stmt->fetchAll(PDO::FETCH_FUNC, 'get_result');
-    $result = $stmt->fetchAll();
+    $result_array = array();
+    $result_array = $stmt->fetchAll();
+
+    // Clean out all the numeric keys, since we dont' need them.
+    foreach (array_keys($result_array) as $result_key) {
+      foreach (array_keys($result_array[$result_key]) as $key) {
+        if (is_int($key)) {
+          unset($result_array[$result_key][$key]);
+        } elseif (substr($key, -3) === '_id') {
+          // Make IDs numeric.
+          $result_array[$result_key][$key] = (int) $result_array[$result_key][$key];
+        }
+      }
+    }
+
     if (@$_REQUEST['format'] === 'debug') {
-      echo var_export($result, TRUE) . "\n";
+      echo var_export($result_array, TRUE) . "\n";
     } else {
-      echo json_encode($result) . "\n";
+      echo json_encode($result_array) . "\n";
     }
   }
 }

@@ -5,7 +5,7 @@ $(function () {
     ids = ["show_city", "show_name", "vendor_name", "vendor_city", "vendor_state", "vendor_country", "product_name"];
     for (i = 0; i < ids.length; i++) {
         id = ids[i];
-        // alert("Adding getoptions.php?category=" + id + " to #" + id);
+        // alert("Adding search/ajaxsearch.php?field=" + id);
         $("#" + id).autocomplete({
             source: "search/ajaxsearch.php?field=" + id,
             // source: "ajaxsearch.php?category=" + show + "&field=" + name + "&term="
@@ -45,7 +45,7 @@ function RenderTemplate(data, id) {
     "use strict";
     $('input[type=textbox]').focus(function (argument) {
         var inputID = "#" + $(this).attr('id');
-        if (inputID === '#vendor') {
+        if (inputID === '#vendor_name') {
             $(inputID).parent().nextUntil('.formGroup').addClass('disabled');
             $('li.disabled input[type=textbox]').attr('disabled', 'disabled');
             $(inputID).blur(function (e) {

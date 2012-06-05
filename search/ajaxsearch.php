@@ -46,12 +46,18 @@ if ($goodsearch) {
   } else {
     header('Content-Type: application/json');
   }
-  $query = "SELECT DISTINCT `$field`, `id` FROM `${category}s` WHERE `$field` LIKE :term";
+  if ($field === 'name') {
+    $query = "SELECT `id`, `$field` FROM `${category}s` WHERE `$field` LIKE :term";
+    $func = 'get_autocomplete_result_name';
+  } else {
+    $query = "SELECT DISTINCT `$field` FROM `${category}s` WHERE `$field` LIKE :term";
+    $func = 'get_autocomplete_result';
+  }
   // echo "$query\n";
   $stmt = $pdo->prepare($query);
   $stmt->bindParam(":term", $term);
   $stmt->execute();
-  $result = $stmt->fetchAll(PDO::FETCH_FUNC, 'get_autocomplete_result');
+  $result = $stmt->fetchAll(PDO::FETCH_FUNC, $func);
 }
 
 if (@$_REQUEST['format'] === 'debug') {
