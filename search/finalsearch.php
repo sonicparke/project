@@ -25,7 +25,8 @@ if ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$v
     header('Content-Type: application/json');
   }
 
-  $query = 'SELECT `vendors`.`id` AS `vendor_id`, `vendors`.`name` AS `vendor_name`, `shows`.`id` AS `show_id`, `shows`.`name` AS `show_name`, `products`.`id` AS `product_id`, `products`.`name` AS `product_name` FROM `vendors` LEFT JOIN `vendors_shows` ON `vendors`.`id` = `vendors_shows`.`vendor_id` LEFT JOIN `shows` ON `vendors_shows`.`show_id` = `shows`.`id` LEFT JOIN `vendors_products` ON `vendors`.`id` = `vendors_products`.`vendor_id` LEFT JOIN `products` ON `vendors_products`.`product_id` = `products`.`id`';
+  // $query = 'SELECT `vendors`.`id` AS `vendor_id`, `vendors`.`name` AS `vendor_name`, `shows`.`id` AS `show_id`, `shows`.`name` AS `show_name`, `products`.`id` AS `product_id`, `products`.`name` AS `product_name` FROM `vendors` LEFT JOIN `vendors_shows` ON `vendors`.`id` = `vendors_shows`.`vendor_id` LEFT JOIN `shows` ON `vendors_shows`.`show_id` = `shows`.`id` LEFT JOIN `vendors_products` ON `vendors`.`id` = `vendors_products`.`vendor_id` LEFT JOIN `products` ON `vendors_products`.`product_id` = `products`.`id`';
+  $query = 'SELECT `vendors`.`id` AS `vendor_id`, `vendors`.`name` AS `vendor_name`, `vendors`.`phone` AS `vendor_phone`, `vendors`.`url` AS `vendor_url` FROM `vendors` LEFT JOIN `vendors_shows` ON `vendors`.`id` = `vendors_shows`.`vendor_id` LEFT JOIN `shows` ON `vendors_shows`.`show_id` = `shows`.`id` LEFT JOIN `vendors_products` ON `vendors`.`id` = `vendors_products`.`vendor_id` LEFT JOIN `products` ON `vendors_products`.`product_id` = `products`.`id`';
 
   $where = $params = array();
 
@@ -80,6 +81,7 @@ if ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$v
   if ($where) {
     $where = implode(' AND ', $where);
     $query .= " WHERE $where";
+    $query .= ' GROUP BY `vendors`.`name` ORDER BY `vendors`.`name`';
 
     $stmt = $pdo->prepare($query);
     foreach ($params as $param) {
@@ -101,6 +103,8 @@ if ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$v
         }
       }
     }
+
+    $result_array = array('items' => $result_array);
 
     if (@$_REQUEST['format'] === 'debug') {
       echo var_export($result_array, TRUE) . "\n";
