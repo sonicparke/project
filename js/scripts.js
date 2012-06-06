@@ -1,4 +1,15 @@
 // AUTOCOMPLETE STUFF
+    var show_id;
+    var show_city;
+    var show_name;
+    var vendor_id;
+    var vendor_name;
+    var vendor_city;
+    var vendor_state;
+    var vendor_country;
+    var product_id;
+    var product_name;
+
 $(function () {
     "use strict";
     var i, id, ids;
@@ -14,6 +25,8 @@ $(function () {
                 var inputID = "#" + $(this).attr('id');
                 $(inputID).parent().nextUntil('.formGroup').addClass('disabled');
                 $(inputID).val(ui.item.label);
+                console.log(ui)
+
                 // log( ui.item ?
                 //  "Selected: " + ui.item.value + " aka " + ui.item.id :
                 //  "Nothing selected, input was " + this.value );
@@ -22,15 +35,6 @@ $(function () {
     }
 });
 
-var ids = [{
-    name: "show_city",
-    category: "show",
-    field: "city"
-}, {
-    name: "show_name",
-    category: "show",
-    field: "name"
-}];
 
 // RENDER THE TEMPLATES
 function RenderTemplate(data, id) {
@@ -67,6 +71,31 @@ function RenderTemplate(data, id) {
     // });
 
     $('#submit').on('click', function (e) {
+        var dataToBeSent = decodeURIComponent($('form').serialize());
+        var url = "search/finalsearch.php?" + dataToBeSent;
+        console.log(url)
+        e.preventDefault();
+        e.stopPropagation();
+
+    
+    
+
+        $.ajax({
+            url: "search/finalsearch.php?" + dataToBeSent,
+            // data: "{assignmentText: '" + assignmentText + "', RecordCount: 0, MaxNoteLength: 0 }",
+            success: function (data) {
+                RenderTemplate(data, 'searchResults');
+                return false;
+            },
+            complete: function (data) {
+
+            },
+            error: function (data) {
+                alert(data)
+            }
+
+        });
+
         $('.slide').animate({
             opacity: 'toggle',
             height: 'toggle'
@@ -122,8 +151,6 @@ function RenderTemplate(data, id) {
 
 // PAGINATION FUNCTION
 function Paginate(elem, pp) {
-    console.log('pagination generated')
-    console.log(elem, pp)
     $("div.pagination").jPages({
         containerID: elem,
         perPage: pp,
