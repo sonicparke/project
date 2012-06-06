@@ -26,7 +26,7 @@ $(function () {
                 $(inputID).parent().nextUntil('.formGroup').addClass('disabled');
                 $(inputID).val(ui.item.label);
                 console.log(ui)
-
+                DisableFields();
                 // log( ui.item ?
                 //  "Selected: " + ui.item.value + " aka " + ui.item.id :
                 //  "Nothing selected, input was " + this.value );
@@ -44,8 +44,8 @@ function RenderTemplate(data, id) {
     $("#" + id + "TemplateArea").html(template(data)); //ADD THE TEMPLATE TO THE TEMPATE AREA
 }
 
-// SLIDING FORM
-(function (params) {
+function DisableFields() {
+    console.log("this555: ",this)
     "use strict";
     $('input[type=textbox]').focus(function (argument) {
         var inputID = "#" + $(this).attr('id');
@@ -55,6 +55,7 @@ function RenderTemplate(data, id) {
             $(inputID).blur(function (e) {
                 if ($(this).val() === '') {
                     $(this).closest('.formGroup').children('li').removeClass('disabled').find('input[type=textbox]').removeAttr('disabled');
+                    console.log("this: ",this)
                 } else {
                     return;
                 }
@@ -63,8 +64,12 @@ function RenderTemplate(data, id) {
         } else {
             return;
         }
-
     });
+}
+
+// SLIDING FORM
+(function (params) {
+    
 
     // $(function () {
     //  $('form li').geoSelector();
@@ -82,9 +87,21 @@ function RenderTemplate(data, id) {
 
         $.ajax({
             url: "search/finalsearch.php?" + dataToBeSent,
-            // data: "{assignmentText: '" + assignmentText + "', RecordCount: 0, MaxNoteLength: 0 }",
             success: function (data) {
-                RenderTemplate(data, 'searchResults');
+                if(data.length){
+                    RenderTemplate(data, 'searchResults');
+                    $('.slide').animate({
+                        opacity: 'toggle',
+                        height: 'toggle'
+                    }, 150, function () {
+                        $('#openSearch').animate({
+                            opacity: 1
+                        });
+                    });
+                } else {
+                    ErrorAlert('Please try your search again. You may need to be less specific.', '.slide')
+                }
+
                 return false;
             },
             complete: function (data) {
@@ -96,14 +113,7 @@ function RenderTemplate(data, id) {
 
         });
 
-        $('.slide').animate({
-            opacity: 'toggle',
-            height: 'toggle'
-        }, 150, function () {
-            $('#openSearch').animate({
-                opacity: 1
-            });
-        });
+        
         e.preventDefault();
         e.stopPropagation();
     });
@@ -190,6 +200,28 @@ $(function() {
                 });
     }
 });
+
+/***** ERROR ALERT *****/
+function ErrorAlert(d, element) {
+    var alertHTML = '<div id="alert" class="alert" style="display: none; "><img src="images/icn-alert.png" /><h2 style="opacity: 0; ">' + d + '</h2></div>';
+    $(element).prepend(alertHTML);
+    var errorID = '#alert';
+    var error = $(errorID);
+    if($('#alert').is(":visible")){
+        return
+    } else {
+        error.slideDown('fast', function () {
+            // $(this).html('<h2>' + d + '</h2>');
+            $(this).children().animate({opacity: '1'}, 'fast')
+            .delay('2600').animate({opacity: '0'}, 'fast');
+        })
+            .delay('3000')
+            .slideUp('fast', function () {
+            $(this).remove();
+        });     
+    }
+};
+
 
 // JQUERY GEOSELECTOR FROM https://github.com/LawnGnome/jQuery-geoselector
 // (function ($) {

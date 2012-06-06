@@ -77,6 +77,7 @@
                 </form>
                 <a href="#" id="openSearch" class="button ">Search Again</a> 
             </div>
+            
             </div>
             <div id="searchResultsTemplateArea" class="container">
                 
@@ -96,9 +97,9 @@
             <div class="listRecords searchResults">   
                 <h2 class="row listTitle"><span class="twocol col1 ">Company Name</span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></h2>
                 <ul id="searchResultsList">
-                {{#vendor_id}}
+                {{#each items}}
                     <li class="row listItem" id="{{id}}"><span class="twocol col1" >{{vendor_name}}</span><span class="twocol col2">{{vendor_id}}</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
-                {{/vendor_id}}
+                {{/each}}
                 </ul>
             </div>
         <div class="pagination"></div>

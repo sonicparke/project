@@ -22,7 +22,7 @@ overflow: hidden;
 }
 
 .onecol, .twocol, .threecol, .fourcol, .fivecol, .sixcol, .sevencol, .eightcol, .ninecol, .tencol, .elevencol {
-margin-right: 3.8%;
+margin-right: 3.7%;
 float: left;
 min-height: 1px;
 }
@@ -725,6 +725,39 @@ form li.disabled input {
 
 }
 
+/********** ERROR ALERTS **********/
+.alert h2, .alert img, .alert .button {
+	display: inline-block;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+
+.alert {
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 50px;
+	text-align: center;
+}
+
+.alert h2 {
+	padding: 0 0 0 5px;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: left;
+	line-height: 8px;
+}
+
+.alert img {
+	position: relative;
+	top: 8px;
+}
+
+.alert .button {
+	margin-left: 20px;
+}
 
 
 /***** clearfix *****/
