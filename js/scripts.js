@@ -27,9 +27,6 @@ $(function () {
                 $(inputID).val(ui.item.label);
                 console.log(ui)
                 DisableFields();
-                // log( ui.item ?
-                //  "Selected: " + ui.item.value + " aka " + ui.item.id :
-                //  "Nothing selected, input was " + this.value );
             }
         });
     }
@@ -45,7 +42,6 @@ function RenderTemplate(data, id) {
 }
 
 function DisableFields() {
-    console.log("this555: ",this)
     "use strict";
     $('input[type=textbox]').focus(function (argument) {
         var inputID = "#" + $(this).attr('id');
@@ -55,7 +51,6 @@ function DisableFields() {
             $(inputID).blur(function (e) {
                 if ($(this).val() === '') {
                     $(this).closest('.formGroup').children('li').removeClass('disabled').find('input[type=textbox]').removeAttr('disabled');
-                    console.log("this: ",this)
                 } else {
                     return;
                 }
@@ -76,7 +71,8 @@ function DisableFields() {
     // });
 
     $('#submit').on('click', function (e) {
-        var dataToBeSent = decodeURIComponent($('form').serialize());
+        // var dataToBeSent = decodeURIComponent($('form').serialize());
+        var dataToBeSent = $('form').serialize();
         var url = "search/finalsearch.php?" + dataToBeSent;
         console.log(url)
         e.preventDefault();
@@ -88,8 +84,10 @@ function DisableFields() {
         $.ajax({
             url: "search/finalsearch.php?" + dataToBeSent,
             success: function (data) {
-                if(data.length){
+                var items = data.items; 
+                if(items.length){
                     RenderTemplate(data, 'searchResults');
+                    CreateVendorDetailClickEvent(items);
                     $('.slide').animate({
                         opacity: 'toggle',
                         height: 'toggle'
@@ -98,6 +96,7 @@ function DisableFields() {
                             opacity: 1
                         });
                     });
+
                 } else {
                     ErrorAlert('Please try your search again. You may need to be less specific.', '.slide')
                 }
@@ -132,25 +131,28 @@ function DisableFields() {
     });
 
     // POPUP THE DIALOG BOX FOR THE VENDOR DETAIL
-    $("#searchResultsList li").on('click', function (e) {
-        var $this, context, vendorID, data;
-        $this = $(this);
-        context = $this.closest('.container');
-        vendorID = $this.attr('id');
-        data = {
-            name: vendorID
-        };
-        // Render Handlebars Template
-        RenderTemplate(data, 'vendorDetail');
-        $(".vendorDetail" ).dialog({
-            height: 140,
-            modal: true,
-            close: function(event, ui) {
-                $("#vendorDetailTemplateArea").empty();
-                $(".vendorDetail").remove();
-            }
-        });
-    })
+    function CreateVendorDetailClickEvent (data) {
+        console.log(data)
+        $("#searchResultsList").on('click', 'li', function (e) {
+            console.log(data)
+            var $this, context, vendorID, data;
+            $this = $(this);
+            // context = $this.closest('.container');
+            vendorID = $this.attr('id');
+            
+            // Render Handlebars Template
+            RenderTemplate(data, 'vendorDetail');
+            $(".vendorDetail" ).dialog({
+                // height: 140,
+                modal: true,
+                close: function(event, ui) {
+                    $("#vendorDetailTemplateArea").empty();
+                    $(".vendorDetail").remove();
+                }
+            });
+        })
+    }
+    
 
     // REMOVE THE DISABLE FROM INPUTS ON RESET
     $('#reset').on('click', function (e) {

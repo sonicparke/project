@@ -438,6 +438,14 @@ form li.disabled input {
 	white-space: nowrap;
 }
 
+.listRecords.searchResults li a {
+	color: #3799FF;
+}
+
+.listRecords li a:hover, .listRecords li.listItem:hover a {
+	color: #ffffff;
+}
+
 .listRecords li span {
 	display: inline-block;
 	overflow: hidden;

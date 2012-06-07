@@ -95,10 +95,10 @@
     <script type="text/x-Handlebars-tmpl" id="searchResultsTemplate">
         <div class="pagination"></div>
             <div class="listRecords searchResults">   
-                <h2 class="row listTitle"><span class="twocol col1 ">Company Name</span><span class="twocol col2">Address</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></h2>
+                <h2 class="row listTitle"><span class="fourcol col1 ">Company Name</span><span class="threecol col2">Phone</span><span class="fourcol col3">Website</span></h2>
                 <ul id="searchResultsList">
                 {{#each items}}
-                    <li class="row listItem" id="{{id}}"><span class="twocol col1" >{{vendor_name}}</span><span class="twocol col2">{{vendor_id}}</span><span class="twocol col3">City, ST, Zip</span><span class="twocol col4 ">Phone</span><span class="twocol col5 ">Email</span><span class="twocol col6 last">Web</span></li>
+                    <li class="row listItem" id="vendor{{vendor_id}}"><span class="fourcol col1" >{{vendor_name}}</span><span class="threecol col2">{{vendor_phone}}</span><span class="fourcol col3"><a href="http://{{vendor_url}}" target="_blank" alt="{{vendor_name}}">{{vendor_url}}</a></span></li>
                 {{/each}}
                 </ul>
             </div>
@@ -106,9 +106,9 @@
     </script>
 
     <script type="text/x-Handlebars-tmpl" id="vendorDetailTemplate">
-        <div  class="vendorDetail" title="{{name}}">
+        <div id="vendor{{vendor_id}}Detail"  class="vendorDetail" title="{{vendor_name}}">
             <ul>
-                <li class="listTitle">{{name}}</li>
+                <li class="listTitle">{{vendor_name}}</li>
                 <li class="listTitle">Address</li>
                 <li class="listTitle">City</li>
                 <li class="listTitle">State</li>
