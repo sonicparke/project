@@ -13,7 +13,7 @@
     </div>
     <a href="#" id="testclick">test</a>
     <div class="wrapperContent admin">
-        
+
         <div class="container">
                 <a id="addVendor" class="button addNewRecord" href="#">Add New Vendor</a>
                 <div class="pagination"></div>
@@ -133,7 +133,7 @@
                         </li>
                     </ul>
                 </div>
-                
+
                 <div class="pagination"></div>
             </div>
 
@@ -142,12 +142,12 @@
     <div id="addNewRecordPopup" class="container hidden row">
         <form>
                 <ul class="formGroup sixcol vendors">
-                   
+
                     <li>
-                        <label for="vendorName">Company Name</label><input type="textbox" id="vendorName">
+                        <label for="vendor_name">Company Name</label><input type="textbox" id="vendor_name">
                     </li>
                     <li>
-                        <label for="vendorContactName">Contact Name</label><input type="textbox" id="vendorContactName">
+                        <label for="vendor_first_name">Contact Name</label><input type="textbox" id="vendor_first_name">
                     </li>
                     <li>
                         <label for="membershipLevel">Membership Level</label>
@@ -160,41 +160,41 @@
                         </select>
                     </li>
                     <li>
-                        <label for="vendorAddress">Address</label><input type="textbox" id="vendorAddress">
+                        <label for="vendor_address">Address</label><input type="textbox" id="vendor_address">
                     </li>
                     <li>
-                        <label for="vendorCity">City</label><input type="textbox" id="vendorCity">
+                        <label for="vendor_city">City</label><input type="textbox" id="vendor_city">
                     </li>
                     <li>
-                        <label for="vendorState">State</label><input name="state" type="textbox" id="vendorState">
+                        <label for="vendor_state">State</label><input name="state" type="textbox" id="vendor_state">
                     </li>
                     <li>
-                        <label for="vendorZip">Zip</label><input type="textbox" id="vendorZip">
+                        <label for="vendor_zip">Zip</label><input type="textbox" id="vendor_zip">
                     </li>
                     <li>
-                        <label for="vendorCountry">Country</label><input NAME="country" type="textbox" id="vendorCountry">
+                        <label for="vendor_country">Country</label><input NAME="country" type="textbox" id="vendor_country">
                     </li>
                     <li>
-                        <label for="vendorPhone">Phone</label><input type="textbox" id="vendorPhone">
+                        <label for="vendor_phone">Phone</label><input type="textbox" id="vendor_phone">
                     </li>
                     <li>
-                        <label for="vendorFax">Fax</label><input type="textbox" id="vendorFax">
+                        <label for="vendor_fax">Fax</label><input type="textbox" id="vendor_fax">
                     </li>
                     <li>
-                        <label for="vendorEmail">Email</label><input type="textbox" id="vendorEmail">
+                        <label for="vendor_email">Email</label><input type="textbox" id="vendor_email">
                     </li>
                     <li>
-                        <label for="vendorURL">Website</label><input type="textbox" id="vendorURL">
+                        <label for="vendor_url">Website</label><input type="textbox" id="vendor_url">
                     </li>
                 </ul>
                 <ul class="formGroup buttons">
                     <li>
                         <input href="#" id="reset" class="button" type="cancel" value="CANCEL" />
                     </li>
-                    <li>    
+                    <li>
                         <input href="#" id="submit" class="button" type="submit" value="SAVE" />
                     </li>
-                </ul>          
+                </ul>
         </form>
     </div>
 
@@ -202,47 +202,47 @@
             <form>
                     <ul class="formGroup sixcol vendors">
                         <li>
-                            <label for="vendorName">Company Name</label><input type="textbox" id="vendorName">
+                            <label for="vendor_name">Company Name</label><input type="textbox" id="vendor_name">
                         </li>
                         <li>
-                            <label for="vendorContactName">Contact Name</label><input type="textbox" id="vendorContactName">
+                            <label for="vendor_first_name">Contact Name</label><input type="textbox" id="vendor_first_name">
                         </li>
                         <li>
-                            <label for="vendorAddress">Address</label><input type="textbox" id="vendorAddress">
+                            <label for="vendor_address">Address</label><input type="textbox" id="vendor_address">
                         </li>
                         <li>
-                            <label for="vendorCity">City</label><input type="textbox" id="vendorCity">
+                            <label for="vendor_city">City</label><input type="textbox" id="vendor_city">
                         </li>
                         <li>
-                            <label for="vendorState">State</label><input type="textbox" id="vendorState">
+                            <label for="vendor_state">State</label><input type="textbox" id="vendor_state">
                         </li>
                         <li>
-                            <label for="vendorZip">Zip</label><input type="textbox" id="vendorZip">
+                            <label for="vendor_zip">Zip</label><input type="textbox" id="vendor_zip">
                         </li>
                         <li>
-                            <label for="vendorCountry">Country</label><input type="textbox" id="vendorCountry">
+                            <label for="vendor_country">Country</label><input type="textbox" id="vendor_country">
                         </li>
                         <li>
-                            <label for="vendorPhone">Phone</label><input type="textbox" id="vendorPhone">
+                            <label for="vendor_phone">Phone</label><input type="textbox" id="vendor_phone">
                         </li>
                         <li>
-                            <label for="vendorFax">Fax</label><input type="textbox" id="vendorFax">
+                            <label for="vendor_fax">Fax</label><input type="textbox" id="vendor_fax">
                         </li>
                         <li>
-                            <label for="vendorEmail">Email</label><input type="textbox" id="vendorEmail">
+                            <label for="vendor_email">Email</label><input type="textbox" id="vendor_email">
                         </li>
                         <li>
-                            <label for="vendorURL">Website</label><input type="textbox" id="vendorURL">
+                            <label for="vendor_url">Website</label><input type="textbox" id="vendor_url">
                         </li>
                     </ul>
                     <ul class="formGroup buttons">
                         <li>
                             <input href="#" id="reset" class="button" type="cancel" value="CANCEL" />
                         </li>
-                        <li>    
+                        <li>
                             <input href="#" id="submit" class="button" type="submit" value="SAVE" />
                         </li>
-                    </ul>          
+                    </ul>
             </form>
         </div>
 
