@@ -1,17 +1,4 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>XPO Everything Finder Admin</title>
-    <link rel="stylesheet" type="text/css" href="../css/jQuery-UI/jquery-ui-1.8.20.custom.css">
-    <link rel="stylesheet" type="text/css" href="../css/styles.css">
-  </head>
-  <body id="vendor">
-    <div class="header">
-        <img src="../images/logo.png" alt="XPO Press" />
-        <h1 class="title">XPO Everything Finder Admin</h1>
-    </div>
-    <a href="#" id="testclick">test</a>
+<?php include 'inc/header.php'; ?>
     <div class="wrapperContent admin">
 
         <div class="container">
@@ -258,17 +245,4 @@
         </div>
     </script>
 
-
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../js/handlebars-1.0.0.beta.6.js"></script>
-    <script type="text/javascript" src="../js/jPages.min.js"></script>
-    <script type="text/javascript" src="../js/scripts.js"></script>
-    <script type="text/javascript" src="js/adminScripts.js"></script>
-    <script>
-        $(document).ready(function(e) {
-            Paginate("listRecords > ul", 5);
-        });
-    </script>
-  </body>
-</html>
+<?php include 'inc/footer.php'; ?>

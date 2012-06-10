@@ -1,21 +1,5 @@
-<!doctype html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>XPO Everything Finder</title>
-    <link rel="stylesheet" type="text/css" href="css/jQuery-UI/jquery-ui-1.8.20.custom.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <link href='http://fonts.googleapis.com/css?family=Nunito?family=Cabin:400,700' rel='stylesheet' type='text/css'>
-    <!--[if IE]>
-        <link rel="stylesheet" type="text/css" href="css/ie.css" />
-    <![endif]-->
-  </head>
-  <body>
-    <div class="">
-            <div class="header">
-                <img src="images/logo.png" alt="XPO Press" />
-                <h1 class="title">XPO Everything Finder</h1>
-            </div>
+<?php include 'inc/header.php'; ?>
+
         <div class="wrapperContent">
             <div class="ui-widget searchForm container row clearfix">
                 <form>
@@ -116,15 +100,5 @@
         </div>
     </script>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="js/handlebars-1.0.0.beta.6.js"></script>
-    <script type="text/javascript" src="js/jPages.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <script>
-        $(document).ready(function(e) {
-            Paginate("searchResultsList", 20);
-        });
-    </script>
-  </body>
-</html>
+    <?php include 'inc/footer.php'; ?>
+
