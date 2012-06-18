@@ -16,14 +16,40 @@ $vendor_country = @$_REQUEST['vendor_country'];
 $product_id = (int) @$_REQUEST['product_id'];
 $product_name = @$_REQUEST['product_name'];
 
-if ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$vendor_city$vendor_state$vendor_country$product_name") {
+$get_all = @$_REQUEST['get_all'];
+
+$result_array = array();
+
+if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
+  require_once('../inc/db.inc.php');
+  if ($get_all === 'show' or $get_all === 'product') {
+    $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $result_array = array();
+    $result_array = $stmt->fetchAll();
+  } elseif ($get_all === 'vendor') {
+    $query = "SELECT `vendors`.`id` AS `vendor_id`, `name` AS `vendor_name`, `address` AS `vendor_address`, `city` AS `vendor_city`, `state` AS `vendor_state`, `zip` AS `vendor_zip`, `country` AS `vendor_country`, `phone` AS `vendor_phone`, `fax` AS `vendor_fax`, `email` AS `vendor_email`, `url` AS `vendor_url`, `level` AS `vendor_level`, (SELECT GROUP_CONCAT(`product_id` ORDER BY `product_id` SEPARATOR \",\") FROM `vendors_products` WHERE `vendor_id` = `vendors`.`id`) AS `vendor_product_ids` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $result_array = array();
+    $result_array = $stmt->fetchAll();
+    foreach ($result_array as $key => $value) {
+      $product_list = $value['vendor_product_ids'];
+      if (strpos($product_list, ',')) {
+        $product_list = explode(',', $product_list);
+        foreach ($product_list as $product_key => $product_value) {
+          $product_list[$product_key] = (int) $product_value;
+        }
+        $result_array[$key]['vendor_product_ids'] = $product_list;
+      } else {
+        $result_array[$key]['vendor_product_ids'] = array();
+      }
+    }
+  }
+} elseif ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$vendor_city$vendor_state$vendor_country$product_name") {
   require_once('../inc/db.inc.php');
   require_once('../inc/search.inc.php');
-  if (@$_REQUEST['format'] === 'debug') {
-    header('Content-Type: text/plain');
-  } else {
-    header('Content-Type: application/json');
-  }
 
   // $query = 'SELECT `vendors`.`id` AS `vendor_id`, `vendors`.`name` AS `vendor_name`, `shows`.`id` AS `show_id`, `shows`.`name` AS `show_name`, `products`.`id` AS `product_id`, `products`.`name` AS `product_name` FROM `vendors` LEFT JOIN `vendors_shows` ON `vendors`.`id` = `vendors_shows`.`vendor_id` LEFT JOIN `shows` ON `vendors_shows`.`show_id` = `shows`.`id` LEFT JOIN `vendors_products` ON `vendors`.`id` = `vendors_products`.`vendor_id` LEFT JOIN `products` ON `vendors_products`.`product_id` = `products`.`id`';
   $query = 'SELECT `vendors`.`id` AS `vendor_id`, `vendors`.`name` AS `vendor_name`, `vendors`.`phone` AS `vendor_phone`, `vendors`.`url` AS `vendor_url` FROM `vendors` LEFT JOIN `vendors_shows` ON `vendors`.`id` = `vendors_shows`.`vendor_id` LEFT JOIN `shows` ON `vendors_shows`.`show_id` = `shows`.`id` LEFT JOIN `vendors_products` ON `vendors`.`id` = `vendors_products`.`vendor_id` LEFT JOIN `products` ON `vendors_products`.`product_id` = `products`.`id`';
@@ -91,26 +117,28 @@ if ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$v
     $stmt->execute();
     $result_array = array();
     $result_array = $stmt->fetchAll();
+  }
+}
 
-    // Clean out all the numeric keys, since we dont' need them.
-    foreach (array_keys($result_array) as $result_key) {
-      foreach (array_keys($result_array[$result_key]) as $key) {
-        if (is_int($key)) {
-          unset($result_array[$result_key][$key]);
-        } elseif (substr($key, -3) === '_id') {
-          // Make IDs numeric.
-          $result_array[$result_key][$key] = (int) $result_array[$result_key][$key];
-        }
-      }
-    }
-
-    $result_array = array('items' => $result_array);
-
-    if (@$_REQUEST['format'] === 'debug') {
-      echo var_export($result_array, TRUE) . "\n";
-    } else {
-      echo json_encode($result_array) . "\n";
+// Clean out all the numeric keys, since we dont' need them.
+foreach (array_keys($result_array) as $result_key) {
+  foreach (array_keys($result_array[$result_key]) as $key) {
+    if (is_int($key)) {
+      unset($result_array[$result_key][$key]);
+    } elseif (substr($key, -3) === '_id') {
+      // Make IDs numeric.
+      $result_array[$result_key][$key] = (int) $result_array[$result_key][$key];
     }
   }
+}
+
+$result_array = array('items' => $result_array);
+
+if (@$_REQUEST['format'] === 'debug') {
+  header('Content-Type: text/plain');
+  echo var_export($result_array, TRUE) . "\n";
+} else {
+  header('Content-Type: application/json');
+  echo json_encode($result_array) . "\n";
 }
 ?>
