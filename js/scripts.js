@@ -19,13 +19,11 @@ $(function () {
         // alert("Adding search/ajaxsearch.php?field=" + id);
         $("#" + id).autocomplete({
             source: "search/ajaxsearch.php?field=" + id,
-            // source: "ajaxsearch.php?category=" + show + "&field=" + name + "&term="
             minLength: 2,
             select: function (event, ui) {
                 var inputID = "#" + $(this).attr('id');
                 $(inputID).parent().nextUntil('.formGroup').addClass('disabled');
                 $(inputID).val(ui.item.label);
-                console.log(ui)
                 DisableFields();
             }
         });
@@ -64,29 +62,19 @@ function DisableFields() {
 
 // SLIDING FORM
 (function (params) {
-    
-
-    // $(function () {
-    //  $('form li').geoSelector();
-    // });
-
     $('#submit').on('click', function (e) {
         // var dataToBeSent = decodeURIComponent($('form').serialize());
         var dataToBeSent = $('form').serialize();
         var url = "search/finalsearch.php?" + dataToBeSent;
-        console.log(url)
         e.preventDefault();
         e.stopPropagation();
-
-    
-    
-
         $.ajax({
             url: "search/finalsearch.php?" + dataToBeSent,
             success: function (data) {
                 var items = data.items; 
                 if(items.length){
                     RenderTemplate(data, 'searchResults');
+                    console.log('items.length: ', items)
                     CreateVendorDetailClickEvent(items);
                     $('.slide').animate({
                         opacity: 'toggle',
@@ -131,15 +119,12 @@ function DisableFields() {
     });
 
     // POPUP THE DIALOG BOX FOR THE VENDOR DETAIL
-    function CreateVendorDetailClickEvent (data) {
-        console.log(data)
+    function CreateVendorDetailClickEvent(data) {
         $("#searchResultsList").on('click', 'li', function (e) {
-            console.log(data)
-            var $this, context, vendorID, data;
+            var $this, context, vendorID;
             $this = $(this);
             // context = $this.closest('.container');
             vendorID = $this.attr('id');
-            
             // Render Handlebars Template
             RenderTemplate(data, 'vendorDetail');
             $(".vendorDetail" ).dialog({
@@ -223,66 +208,3 @@ function ErrorAlert(d, element) {
         });     
     }
 };
-
-
-// JQUERY GEOSELECTOR FROM https://github.com/LawnGnome/jQuery-geoselector
-// (function ($) {
-//  $.fn.geoSelector = function (options) {
-//    var settings = $.extend({
-//      countrySelector: "*[name='country']",
-//      stateSelector: "*[name='state']",
-//      data: "../js/divisions.json",
-//      // data: '',
-//      defaultCountry: "Australia",
-//      defaultState: "Western Australia",
-//    }, options);
-
-//    var countries = $(settings.countrySelector, this);
-//    var states = $(settings.stateSelector, this);
-
-//    if (countries.length != 1) {
-//      throw "Unexpected number of country selectors";
-//    }
-
-//    if (states.length != 1) {
-//      throw "Unexpected number of state selectors";
-//    }
-
-//    $.getJSON(settings.data, function (data) {
-//      var country = $("<select />").attr("name", countries.attr("name"));
-//      var state = $("<select />").attr("name", states.attr("name"));
-
-//      $.each(data.countries, function (code, name) {
-//        var option = $("<option />").text(name).attr("code", code).appendTo(country);
-
-//        if (settings.defaultCountry == name) {
-//          option.attr("selected", "selected");
-//        }
-//      });
-
-//      var updateStates = function (code, def) {
-//        state.empty();
-//        if (data.divisions[code] && data.divisions[code].length) {
-//          $.each(data.divisions[code], function (i, name) {
-//            var option = $("<option />").text(name).appendTo(state);
-
-//            if (def == name) {
-//              option.attr("selected", "selected");
-//            }
-//          });
-//        } else {
-//          $("<option />").text(" ").appendTo(state);
-//        }
-//      };
-
-//      countries.replaceWith(country);
-//      states.replaceWith(state);
-//      updateStates($("option:selected", country).attr("code"), settings.defaultState);
-
-//      country.change(function () {
-//        updateStates($("option:selected", this).attr("code"));
-//        return true;
-//      });
-//    });
-//  };
-// })(jQuery);

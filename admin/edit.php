@@ -5,6 +5,9 @@ ini_set('html_errors', FALSE);
 
 $category = $action = $id = NULL;
 
+$debug = FALSE;
+if ($debug) echo __FILE__ . ':' . __LINE__ . ' \$_REQUEST: ' . var_export($_REQUEST, TRUE) . "\n";
+
 if (in_array(@$_REQUEST['category'], array('vendor', 'product', 'show'))) {
   $category = $_REQUEST['category'];
 } else {
@@ -30,7 +33,7 @@ if ($action === 'update' or $action === 'delete') {
 require_once('../inc/db.inc.php');
 
 if ($action === 'delete') {
-  $query = "UPDATE `${category}s` SET `deleted` = TRUE WHERE `id` = :id";
+  $query = "UPDATE `${category}s` SET `deleted` = TRUE, `name` = CONCAT(\"DELETED: \", `name`) WHERE `id` = :id";
   $stmt = $pdo->prepare($query);
   $stmt->bindParam(':id', $id, PDO::PARAM_INT);
   if ($stmt->execute()) {
@@ -45,7 +48,7 @@ if ($action === 'delete') {
   }
 } else {
   $param_names = array(
-                       'vendor' => array('name', 'first_name', 'address', 'city', 'state', 'zip', 'country', 'phone', 'fax', 'email', 'url'),
+                       'vendor' => array('name', 'first_name', 'address', 'city', 'state', 'zip', 'country', 'phone', 'fax', 'email', 'url', 'level'),
                        'show' => array('name'),
                        'product' => array('name')
                        );
@@ -60,6 +63,7 @@ if ($action === 'delete') {
         $bind_params[$full_param_name] = PDO::PARAM_STR;
       }
     }
+    if ($debug) echo __FILE__ . ':' . __LINE__ . ' \$set_params: ' . var_export($set_params, TRUE) . "\n";
     $set_params = implode(', ', $set_params);
     if ($action === 'create') {
       $query = "INSERT INTO `${category}s` SET $set_params";
@@ -72,11 +76,37 @@ if ($action === 'delete') {
       $stmt->bindParam(":$bind_param_name", $$bind_param_name, $bind_param_type);
     }
     if ($stmt->execute()) {
+      $id = (int) $id;
       if ($stmt->rowCount() === 1) {
         $return = array('error' => FALSE);
         if ($id = (int) $pdo->lastInsertId()) $return["${category}_id"] = $id;
       } else {
-        $return = array('error' => TRUE, 'error_info' => ucfirst($category) . ' already exists');
+        if ($action === 'create') {
+          $return = array('error' => TRUE, 'error_info' => ucfirst($category) . ' already exists');
+        } else {
+          $return = array('error' => FALSE);
+        }
+      }
+
+      if (!$return['error'] and $category === 'vendor' and isset($_REQUEST['vendor_product_id']) and is_array($_REQUEST['vendor_product_id'])) {
+        $query = 'DELETE FROM `vendors_products` WHERE `vendor_id` = :id';
+        $bind_params['id'] = PDO::PARAM_INT;
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $id = (int) $id;
+
+        $product_id = NULL;
+        $query = 'INSERT INTO `vendors_products` SET `vendor_id` = :vendor_id, `product_id` = :product_id';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':vendor_id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':product_id', $product_id, PDO::PARAM_INT);
+
+        foreach ($_REQUEST['vendor_product_id'] as $product_id) {
+          $id = (int) $id;
+          $product_id = (int) $product_id;
+          $stmt->execute();
+        }
       }
     } else {
       $error_info = $stmt->errorInfo();
