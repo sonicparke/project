@@ -3,6 +3,9 @@ error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', TRUE);
 ini_set('html_errors', FALSE);
 
+require_once('../inc/functions.inc.php');
+fix_gpc_vars();
+
 $category = $action = $id = NULL;
 
 $debug = FALSE;
@@ -64,31 +67,39 @@ if ($action === 'delete') {
       }
     }
     if ($debug) echo __FILE__ . ':' . __LINE__ . ' \$set_params: ' . var_export($set_params, TRUE) . "\n";
-    $set_params = implode(', ', $set_params);
-    if ($action === 'create') {
-      $query = "INSERT INTO `${category}s` SET $set_params";
-    } elseif ($action === 'update') {
-      $query = "UPDATE `${category}s` SET $set_params WHERE `id` = :id";
-      $bind_params['id'] = PDO::PARAM_INT;
-    }
-    $stmt = $pdo->prepare($query);
-    foreach ($bind_params as $bind_param_name => $bind_param_type) {
-      $stmt->bindParam(":$bind_param_name", $$bind_param_name, $bind_param_type);
-    }
-    if ($stmt->execute()) {
-      $id = (int) $id;
-      if ($stmt->rowCount() === 1) {
-        $return = array('error' => FALSE);
-        if ($id = (int) $pdo->lastInsertId()) $return["${category}_id"] = $id;
-      } else {
-        if ($action === 'create') {
-          $return = array('error' => TRUE, 'error_info' => ucfirst($category) . ' already exists');
-        } else {
-          $return = array('error' => FALSE);
-        }
+    if (count($set_params)) {
+      $set_params = implode(', ', $set_params);
+      if ($action === 'create') {
+        $query = "INSERT INTO `${category}s` SET $set_params";
+      } elseif ($action === 'update') {
+        $query = "UPDATE `${category}s` SET $set_params WHERE `id` = :id";
+        $bind_params['id'] = PDO::PARAM_INT;
       }
-
-      if (!$return['error'] and $category === 'vendor' and isset($_REQUEST['vendor_product_id']) and is_array($_REQUEST['vendor_product_id'])) {
+      $stmt = $pdo->prepare($query);
+      foreach ($bind_params as $bind_param_name => $bind_param_type) {
+        $stmt->bindParam(":$bind_param_name", $$bind_param_name, $bind_param_type);
+      }
+      if ($stmt->execute()) {
+        $id = (int) $id;
+        if ($stmt->rowCount() === 1) {
+          $return = array('error' => FALSE);
+          if ($id = (int) $pdo->lastInsertId()) $return["${category}_id"] = $id;
+        } else {
+          if ($action === 'create') {
+            $return = array('error' => TRUE, 'error_info' => ucfirst($category) . ' already exists');
+          } else {
+            $return = array('error' => FALSE);
+          }
+        }
+      } else {
+        $error_info = $stmt->errorInfo();
+        $return = array('error' => TRUE, 'error_info' => $error_info[2]);
+      }
+    } else {
+      $return = array('error' => FALSE);
+    }
+    if (!$return['error'] and $category === 'vendor') {
+      if (isset($_REQUEST['vendor_product_id']) and is_array($_REQUEST['vendor_product_id'])) {
         $query = 'DELETE FROM `vendors_products` WHERE `vendor_id` = :id';
         $bind_params['id'] = PDO::PARAM_INT;
         $stmt = $pdo->prepare($query);
@@ -108,9 +119,29 @@ if ($action === 'delete') {
           $stmt->execute();
         }
       }
-    } else {
-      $error_info = $stmt->errorInfo();
-      $return = array('error' => TRUE, 'error_info' => $error_info[2]);
+
+      if (isset($_REQUEST['vendor_show_id']) and is_array($_REQUEST['vendor_show_id'])) {
+        $query = 'DELETE FROM `vendors_shows` WHERE `vendor_id` = :id';
+        $bind_params['id'] = PDO::PARAM_INT;
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $id = (int) $id;
+
+        $show_id = NULL;
+        $query = 'INSERT INTO `vendors_shows` SET `vendor_id` = :vendor_id, `show_id` = :show_id, `booth_num` = :booth_num';
+        $stmt = $pdo->prepare($query);
+        $stmt->bindParam(':vendor_id', $id, PDO::PARAM_INT);
+        $stmt->bindParam(':show_id', $show_id, PDO::PARAM_INT);
+        $stmt->bindParam(':booth_num', $booth_num, PDO::PARAM_STR);
+
+        foreach ($_REQUEST['vendor_show_id'] as $show_id => $booth_num) {
+          $id = (int) $id;
+          $show_id = (int) $show_id;
+          if ($booth_num === '') $booth_num = NULL;
+          $stmt->execute();
+        }
+      }
     }
   } else {
     die("Can't do $action yet.\n");

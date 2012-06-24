@@ -31,6 +31,17 @@ function Paginate(elem, pp) {
     });
 };
 
+function PaginatePopups(elem, pp) {
+    var paginationDiv = '#' + elem + 'Popup div.pagination';
+    var containerID = elem + 'List';
+    $(paginationDiv).jPages({
+        containerID: containerID,
+        perPage: pp,
+        first: "first",
+        last: "last"
+    });
+};
+
 function InitializeAdminFunctions() {
     "use strict";
     var $this;
@@ -48,28 +59,153 @@ function InitializeAdminFunctions() {
         thisID = $this.attr("id");
         thisRecordID = $this.closest("li").attr("id");
         thisValue = $('#' + thisRecordID).find('span.col1').text();
-        $.ajax({
-            url: '../search/finalsearch.php?' + recordType + '_id=' + thisRecordID,
-            success: function (data) {
+        // if(recordType === 'vendor' && dataDialog === 'editProduct') {
+        //     console.log(dataDialog)
+        //     thisRecordID = $this.closest("li").attr("id");
+        //     $.ajax({
+        //         url: '../search/finalsearch.php?get_all=product&vendor_id=' + thisRecordID,
+        //         success: function (data) {
+        //             new CreateFormDialog({
+        //                 popupContainer: dataDialog + "Popup",
+        //                 title: "Edit products for " + recordType + " " + thisRecordID,
+        //                 value: thisValue,
+        //                 id: thisRecordID,
+        //                 action: 'update',
+        //                 recordType: recordType,
+        //                 useTemplate: true,
+        //                 data: data,
+        //                 url: "edit.php?action=update&category=" + recordType,
+        //             });
+        //         },
+        //         complete: function (data) {
+        //             new PaginatePopups("editProduct", 10);
+        //         },
+        //         error: function (data) {
+        //             alert('error');
+        //         }
+        //     });
+        // } else if(recordType === 'product' && dataDialog === 'editProduct') {
+        //     console.log(dataDialog + '2')
+        //     thisRecordID = $this.closest("li").attr("id");
+        //     console.log(thisRecordID)
+        //     $.ajax({
+        //         url: '../search/finalsearch.php?category=product&product_id=' + thisRecordID,
+        //         success: function (data) {
+        //             new CreateFormDialog({
+        //                 popupContainer: dataDialog + "Popup",
+        //                 title: "Edit products for " + recordType + " " + thisRecordID,
+        //                 value: thisValue,
+        //                 id: thisRecordID,
+        //                 action: 'update',
+        //                 recordType: recordType,
+        //                 useTemplate: true,
+        //                 data: data,
+        //                 url: "edit.php?action=update&category=" + recordType,
+        //             });
+        //         },
+        //         complete: function (data) {
+        //             new PaginatePopups("editProduct", 10);
+        //         },
+        //         error: function (data) {
+        //             alert('error');
+        //         }
+        //     });
+        // }
+        if(dataDialog === 'editProduct') {
+            console.log(dataDialog)
+            thisRecordID = $this.closest("li").attr("id");
+            if(recordType === 'product') {
+                // var data = $('#' + thisRecordID).find('.product_name').text();
+                var data = {product_name: thisValue}
+                console.log(thisRecordID, thisValue, recordType)
+                // RenderTemplate(data, dataDialog + "Popup");
                 new CreateFormDialog({
-                    popupContainer: dataDialog + "Popup",
-                    title: "Edit " + recordType + " " + thisRecordID,
-                    value: thisValue,
-                    id: thisRecordID,
-                    action: 'update',
-                    recordType: recordType,
-                    useTemplate: true,
-                    data: data
-                });
-                return false;
-            },
-            complete: function (data) {
-                new Paginate("listRecordsTemplateArea > ul", 25);
-            },
-            error: function (data) {
-                alert('error');
+                        popupContainer: dataDialog + "Popup",
+                        title: "Edit product " + thisRecordID,
+                        value: thisValue,
+                        id: thisRecordID,
+                        action: 'update',
+                        recordType: recordType,
+                        useTemplate: true,
+                        data: data,
+                        url: "edit.php?action=update&category=" + recordType,
+                    });
+            } else {
+                $.ajax({
+                url: '../search/finalsearch.php?get_all=product&vendor_id=' + thisRecordID,
+                success: function (data) {
+                    new CreateFormDialog({
+                        popupContainer: dataDialog + "Popup",
+                        title: "Edit products for " + recordType + " " + thisRecordID,
+                        value: thisValue,
+                        id: thisRecordID,
+                        action: 'update',
+                        recordType: recordType,
+                        useTemplate: true,
+                        data: data,
+                        url: "edit.php?action=update&category=" + recordType,
+                    });
+                },
+                complete: function (data) {
+                    new PaginatePopups("editProduct", 10);
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
             }
-        });
+
+        } 
+        else if(recordType === 'vendor' && dataDialog === 'editShow') {
+            console.log(dataDialog)
+            thisRecordID = $this.closest("li").attr("id");
+            $.ajax({
+                url: '../search/finalsearch.php?get_all=show&vendor_id=' + thisRecordID,
+                success: function (data) {
+                    new CreateFormDialog({
+                        popupContainer: dataDialog + "Popup",
+                        title: "Edit shows for " + recordType + " " + thisRecordID,
+                        value: thisValue,
+                        id: thisRecordID,
+                        action: 'update',
+                        recordType: recordType,
+                        useTemplate: true,
+                        data: data,
+                        url: "edit.php?action=update&category=" + recordType,
+                    });
+                },
+                complete: function (data) {
+                    new PaginatePopups("editShow", 10);
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
+        } else {
+            // console.log(dataDialog)
+             $.ajax({
+                url: '../search/finalsearch.php?' + recordType + '_id=' + thisRecordID,
+                success: function (data) {
+                    new CreateFormDialog({
+                        popupContainer: dataDialog + "Popup",
+                        title: "Edit " + recordType + " " + thisRecordID,
+                        value: thisValue,
+                        id: thisRecordID,
+                        action: 'update',
+                        recordType: recordType,
+                        useTemplate: true,
+                        data: data,
+                        url: "edit.php?action=update&category=" + recordType,
+                    });
+                },
+                complete: function (data) {
+                    // new Paginate("listRecordsTemplateArea > ul", 25);
+                },
+                error: function (data) {
+                    alert('error');
+                }
+            });
+        }
         
         e.stopPropagation();
         e.preventDefault(); 
@@ -88,7 +224,8 @@ function InitializeAdminFunctions() {
                 value: thisValue,
                 id: thisRecordID,
                 action: 'create',
-                recordType: recordType
+                recordType: recordType,
+                url: "edit.php?action=create&category=" + recordType,
             });
         e.stopPropagation();
         e.preventDefault(); 
@@ -143,7 +280,7 @@ function InitializeAdminFunctions() {
 
     // CREATE FORM DIALOGS
     function CreateFormDialog(params) {
-
+        console.log(params)
         $("#" + params.popupContainer).dialog({
             title: params.title,
             width: 640,
@@ -151,6 +288,12 @@ function InitializeAdminFunctions() {
             open: function(event, ui) { 
                 if(params.useTemplate === true){
                     RenderTemplate(params.data, params.popupContainer);
+                    
+                    if(recordType === 'vendor' && dataDialog === 'editVendor') {
+                        $(this).find('select[name=vendor_level]').val(params.data.items[0].vendor_level);
+                        $("#" + params.popupContainer).geoSelector();
+                    }
+                    
                 } else {
                     return
                 }
@@ -159,12 +302,55 @@ function InitializeAdminFunctions() {
                 $(this).find("input[type=textbox]").val("");
             }
         });
-        $(".button[type=cancel]").on("click", function (e) {
+        $(".button[name=cancel]").on("click", function (e) {
             $("#" + params.popupContainer).dialog("close").find("select").val("1");
+            e.stopPropagation();
+            e.preventDefault();
         });
-        $('#submit').on('click.SubmitRecord', function (e) {
-            var dataToBeSent = $('form').serialize();
-            var url = "edit.php?action=" + params.action + "&category=" + params.recordType + "&" + dataToBeSent;
+        $('.button[name=submit]').on('click.SubmitRecord', function (e) {
+            var url;
+            var formData;
+            var idArray =[];
+            // var url = "edit.php?action=" + params.action + "&category=" + params.recordType + "&" + formData;
+            //         edit.php?action=    update           &category=    vendor               &vendor_id=35&vendor_level=3&vendor_product_id%5B%5D=5&vendor_product_id%5B%5D=10
+  
+            if(recordType === 'vendor' && dataDialog === 'editProduct'){
+                var checkbox = $(this).closest('form').find('input[type=checkbox]');
+                $.each(checkbox, function () {
+                    if($(this).prop('checked')){
+                        var vendor_product_id = "&vendor_product_id%5B%5D=" + $(this).attr('id').slice(7);
+                        idArray.push(vendor_product_id);
+                    }
+                })
+                url = params.url + "&vendor_id=" + params.id + idArray; // APPEND THE PRODUCT-ID STRING HERE.
+                console.log('1: ', url)
+            }
+            else if(recordType === 'product' && dataDialog === 'editProduct'){
+                var newValue = $(this).closest('form').serialize();
+                url = params.url + '&product_id=' + params.id + '&' + newValue; // APPEND THE PRODUCT-ID STRING HERE.
+                console.log('1: ', url)
+            }
+            else if(recordType === 'vendor' && dataDialog === 'editShow'){
+                var checkbox = $(this).closest('form').find('input[type=checkbox]');
+                // console.log(checkbox)
+                $.each(checkbox, function () {
+                    if($(this).prop('checked')){
+                        var thisID = $(this).attr('id');
+                        var boothNumber = $('input[name=' + thisID + "_booth]").val();
+                        console.log(boothNumber)
+                        var vendor_show_id = "&vendor_show_id%5B" + $(this).attr('id').slice(4) + "%5D=" + boothNumber;
+                        idArray.push(vendor_show_id);
+                    }
+                })
+                url = params.url + "&vendor_id=" + params.id + idArray;
+                console.log('2: ', url)
+            }
+            else {
+                formData = $('#' + params.popupContainer + ' form').serialize();
+                url = params.url + "&vendor_id=" + params.id + "&" + formData;
+                console.log('3: ', url)
+            }
+            
             $.ajax({
                 url: url,
                 success: function (data) {
@@ -179,9 +365,9 @@ function InitializeAdminFunctions() {
                     alert(data);
                 }
             });
-            
             e.stopPropagation();
             e.preventDefault();
+            
         });
     }
 }
@@ -218,8 +404,8 @@ function RenderTemplate(data, id) {
    }
 
    $.getJSON(settings.data, function (data) {
-     var country = $("<select />").attr("data-type", countries.attr("data-type"));
-     var state = $("<select />").attr("data-type", states.attr("data-type"));
+     var country = $("<select />").attr({"data-type": countries.attr("data-type"),"name": countries.attr("name")});
+     var state = $("<select />").attr({"data-type": states.attr("data-type"),"name": states.attr("name")});
 
      $.each(data.countries, function (code, name) {
        var option = $("<option />").text(name).attr("code", code).appendTo(country);
@@ -255,3 +441,6 @@ function RenderTemplate(data, id) {
    });
  };
 })(jQuery);
+
+
+// vendor_show_id[B87]=1a&vendor_show_id[50]=2b&vendor_show_id[51]=3c

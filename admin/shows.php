@@ -8,11 +8,6 @@
                 <div class="pagination"></div>
             </div>
 
-
-
-
-
-
         <div id="editShowPopup" class="container hidden row">
             <form>
                     <ul class="formGroup sixcol shows">
@@ -59,12 +54,8 @@
                     </ul>
                  
                     <ul class="formGroup buttons">
-                        <li>
-                            <input href="#" id="reset" class="button" type="cancel" value="CANCEL" />
-                        </li>
-                        <li>    
-                            <input href="#" id="submit" class="button" type="submit" value="SAVE" />
-                        </li>
+                        <li><input class="button" type="button" name="cancel" value="CANCEL" /></li>
+                        <li><input class="button" type="button" name="submit" value="SAVE" /></li>
                     </ul>          
             </form>
         </div>
@@ -105,12 +96,46 @@
             {{/each}}
             </ul>                    
     </script>
+
+    <script type="text/x-Handlebars-tmpl" id="editShowsPopupTemplate">
+    {{#each items}}
+        <form>
+            <ul class="formGroup sixcol vendors">
+                <li><label for="vendor_name">Company Name</label><input type="textbox" name="vendor_name" value="{{vendor_name}}"></li>
+                <li><label for="vendor_first_name">Contact Name</label><input type="textbox" name="vendor_first_name" value="{{vendor_first_name}}"></li>
+                <li><label for="vendor_level">Membership Level</label>
+                    <select name="vendor_level" value="{{vendor_level}}">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                    </li>
+                <li><label for="vendor_address">Address</label><input type="textbox" name="vendor_address"  value="{{vendor_address}}"></li>
+                <li><label for="vendor_city">City</label><input type="textbox" name="vendor_city" value="{{vendor_city}}"></li>
+                <li><label for="vendor_state">State</label><input data-type="state" type="textbox" name="vendor_state"  value="{{vendor_state}}"></li>
+                <li><label for="vendor_zip">Zip</label><input type="textbox" name="vendor_zip" value="{{vendor_zip}}"></li>
+                <li><label for="vendor_country">Country</label><input data-type="country" type="textbox" name="vendor_country"  value="{{vendor_country}}"></li>
+                <li><label for="vendor_phone">Phone</label><input type="textbox" name="vendor_phone"  value="{{vendor_phone}}"></li>
+                <li><label for="vendor_fax">Fax</label><input type="textbox" name="vendor_fax" value="{{vendor_fax}}"></li>
+                <li><label for="vendor_email">Email</label><input type="textbox" name="vendor_email"  value="{{vendor_email}}"></li>
+                <li><label for="vendor_url">Website</label><input type="textbox" name="vendor_url" value="{{vendor_url}}"></li>
+            </ul>
+            <ul class="formGroup buttons">
+                <li><input class="button" type="button" name="cancel" value="CANCEL" /></li>
+                <li><input class="button" type="button" name="submit" value="SAVE" /></li>
+            </ul>
+        </form>
+        {{/each}}
+    </script>
+
 <?php include 'inc/scripts.php'; ?>
 
     <script>
         $(document).ready(function(e) {
             GetListItems('show');
-            $('form li').geoSelector();
+            
         });
     </script>
 <?php include 'inc/footer.php'; ?>

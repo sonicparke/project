@@ -23,7 +23,11 @@ $result_array = array();
 if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
   require_once('../inc/db.inc.php');
   if ($get_all === 'show' or $get_all === 'product') {
-    $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+    if ($vendor_id) {
+      $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name`, (SELECT COUNT(*) FROM `vendors_${get_all}s` WHERE `vendor_id` = $vendor_id AND `${get_all}_id` = `${get_all}s`.`id`) AS `checked` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+    } else {
+      $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+    }
     $stmt = $pdo->prepare($query);
     $stmt->execute();
     $result_array = array();
@@ -125,6 +129,8 @@ foreach (array_keys($result_array) as $result_key) {
   foreach (array_keys($result_array[$result_key]) as $key) {
     if (is_int($key)) {
       unset($result_array[$result_key][$key]);
+    } elseif ($key === 'checked') {
+      $result_array[$result_key][$key] = (bool) $result_array[$result_key][$key];
     } elseif (substr($key, -3) === '_id') {
       // Make IDs numeric.
       $result_array[$result_key][$key] = (int) $result_array[$result_key][$key];

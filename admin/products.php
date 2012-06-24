@@ -9,24 +9,23 @@
         </div>
 
         <div id="editProductPopup" class="container hidden row">
-            <form>
-                <ul class="formGroup sixcol products">
-                    <li>
-                        <label for="product_name">Product Name</label><input type="textbox" name="product_name" id="product_name">
-                    </li>
-                </ul>
-                <ul class="formGroup buttons">
-                    <li>
-                        <input href="#" id="reset" class="button" type="cancel" value="CANCEL" />
-                    </li>
-                    <li>    
-                        <input href="#" id="submit" class="button" type="submit" value="SAVE" />
-                    </li>
-                </ul>          
-            </form>
+             <div id="editProductPopupTemplateArea"></div>
         </div>
  
     </div>
+    <script type="text/x-Handlebars-tmpl" id="editProductPopupTemplate">
+        <form>
+            <ul class="formGroup sixcol products">
+                <li>
+                    <label for="product_name">Product Name</label><input type="textbox" name="product_name" id="{{product_id}}" value='{{product_name}}'>
+                </li>
+            </ul>
+            <ul class="formGroup buttons">
+                <li><input class="button" type="button" name="cancel" value="CANCEL" /></li>
+                <li><input class="button" type="button" name="submit" value="SAVE" /></li>
+            </ul>          
+        </form>
+    </script>
     <script type="text/x-Handlebars-tmpl" id="listRecordsTemplate">
             <h2 class="row listTitle">
                     <span class="ninecol col1" >Product Name</span>
@@ -35,7 +34,7 @@
             <ul class="products">
             {{#each items}}
                 <li class="row listItem" id="{{product_id}}">
-                    <span class="ninecol col1" >{{product_name}}</span>
+                    <span class="ninecol col1 product_name" >{{product_name}}</span>
                     <span class="col5"><a href="#" data-dialog="editProduct" class="edit button">Edit</a><a href="#" id="" class="button delete">Delete</a></span>
                 </li>
             {{/each}}

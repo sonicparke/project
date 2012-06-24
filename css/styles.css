@@ -1,4 +1,4 @@
-/* CSS Resets */
+#ed/* CSS Resets */
 
 html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,address,cite,code,del,dfn,em,img,ins,q,small,strong,sub,sup,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;margin:0;padding:0}article,aside,figure,figure img,figcaption,hgroup,footer,header,nav,section,video,object{display:block}a img{border:0}figure{position:relative}figure img{width:100%}
 
@@ -88,6 +88,13 @@ img {
 	height: auto;
 }
 
+.padLeft-50 {
+	padding-left: 50px;
+}
+
+.right {
+	float: right;
+}
 
 /* Smaller screens */
 
@@ -145,8 +152,9 @@ ul {
 	list-style-type: none;
 }
 
-.admin {
-	padding-top: 20px;
+.admin .header {
+	adding-top: 20px;
+	margin-bottom: 20px;
 }
 
 .searchForm {
@@ -251,12 +259,11 @@ a.button {
 	background: #444444;
 }
 
-.button[type=cancel] {
-	width: 100px;
+.button[name=cancel] {
 	background: #999999;
 }
 
-.button[type=cancel]:hover {
+.button[name=cancel]:hover {
 	background-color: #cc0000;
 }
 
@@ -296,6 +303,15 @@ label {
 	display: inline-block;
 	width: 20%;
 	font-size: 14px;
+}
+#editProductsList label, #editShowList label {
+	width: auto;
+}
+
+#editShowList input[type=text] {
+	margin-left: 10px;
+	width: 50px;
+	font-size: 12px;
 }
 
 input[type=textbox], select {
@@ -458,6 +474,10 @@ form li.disabled input {
 
 .listRecords li.row {
 	width: auto;
+	font-size: 10px;
+}
+
+.listRecords li.row span:first-child {
 	font-size: 12px;
 }
 
@@ -534,20 +554,6 @@ form li.disabled input {
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 }
-
-/*.listRecords table {
-	width: 100%;
-	text-align: left;
-	border-collapse: collapse;
-}
-
-.listRecords table tbody td {
-	padding: 10px 0;
-}
-
-.listRecords table thead th:first-child {
-	padding-left: 10px;
-}*/
 
 
 /*** ADD RECORD STYLE ***/
