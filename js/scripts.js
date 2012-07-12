@@ -16,23 +16,48 @@ $(function () {
     ids = ["show_city", "show_name", "vendor_name", "vendor_city", "vendor_state", "vendor_country", "product_name"];
     for (i = 0; i < ids.length; i++) {
         id = ids[i];
-        // alert("Adding search/ajaxsearch.php?field=" + id);
         $("#" + id).autocomplete({
             source: "search/ajaxsearch.php?field=" + id,
             minLength: 2,
-            select: function (event, ui) {
-                var inputID = "#" + $(this).attr('id');
-                $(inputID).parent().nextUntil('.formGroup').addClass('disabled');
-                $(inputID).val(ui.item.label);
-                DisableFields();
-            }
+            select: autocompleteActions
         });
     }
+
+    var autocompleteActions = function (event, ui) {
+        "use strict";
+        var inputID = "#" + $(this).attr('id');
+        $(inputID).parent().nextUntil('.formGroup').addClass('disabled');
+        $(inputID).val(ui.item.label);
+        new DisableFields();
+    };
 });
 
 
+
+function GetSelectBoxOptions(params) {
+    "use strict";
+    $.each(params, function (i) {
+        $.ajax({
+            url: '../search/finalsearch.php?get_all=' + params[i],
+            success: function (data) {
+                new RenderTemplate(data, params[i] + 'Options');
+                return false;
+            },
+            error: function (data) {
+                alert('error');
+            }
+        });
+    });
+
+    var selectBoxSuccess = function (data, params) {
+        new RenderTemplate(data, params[i] + 'Options');
+        return false;
+    }
+}
+
 // RENDER THE TEMPLATES
 function RenderTemplate(data, id) {
+    "use strict";
     var source, template;
     source = $("#" + id + "Template").html(); //GET THE HTML TEMPLATE
     template = Handlebars.compile(source); //COMPILE THE TEMPLATE
@@ -53,7 +78,6 @@ function DisableFields() {
                     return;
                 }
             });
-
         } else {
             return;
         }
@@ -62,8 +86,8 @@ function DisableFields() {
 
 // SLIDING FORM
 (function (params) {
+    "use strict";
     $('#submit').on('click', function (e) {
-        // var dataToBeSent = decodeURIComponent($('form').serialize());
         var dataToBeSent = $('form').serialize();
         var url = "search/finalsearch.php?" + dataToBeSent;
         e.preventDefault();
@@ -73,9 +97,8 @@ function DisableFields() {
             success: function (data) {
                 var items = data.items; 
                 if(items.length){
-                    RenderTemplate(data, 'searchResults');
-                    console.log('items.length: ', items)
-                    CreateVendorDetailClickEvent(items);
+                    new RenderTemplate(data, 'searchResults');
+                    new CreateVendorDetailClickEvent(items);
                     $('.slide').animate({
                         opacity: 'toggle',
                         height: 'toggle'
@@ -84,28 +107,21 @@ function DisableFields() {
                             opacity: 1
                         });
                     });
-
                 } else {
-                    ErrorAlert('Please try your search again. You may need to be less specific.', '.slide')
+                    new ErrorAlert('Please try your search again. You may need to be less specific.', '.slide');
                 }
-
                 return false;
             },
-            complete: function (data) {
-
-            },
             error: function (data) {
-                alert(data)
+                alert(data);
             }
-
         });
-
-        
         e.preventDefault();
         e.stopPropagation();
     });
 
     $('#openSearch').on('click', function (e) {
+        $('#searchResultsTemplateArea').empty();
         $('#openSearch').animate({
             opacity: 0
         }, 250);
@@ -126,7 +142,7 @@ function DisableFields() {
             // context = $this.closest('.container');
             vendorID = $this.attr('id');
             // Render Handlebars Template
-            RenderTemplate(data, 'vendorDetail');
+            new RenderTemplate(data, 'vendorDetail');
             $(".vendorDetail" ).dialog({
                 // height: 140,
                 modal: true,
@@ -135,34 +151,34 @@ function DisableFields() {
                     $(".vendorDetail").remove();
                 }
             });
-        })
+        });
     }
-    
 
     // REMOVE THE DISABLE FROM INPUTS ON RESET
     $('#reset').on('click', function (e) {
         $('.formGroup li').removeClass('disabled').find('input[type=textbox]').removeAttr('disabled');
-    })
-
+    });
 })();
 
 // PAGINATION FUNCTION
 function Paginate(elem, pp) {
+    "use strict";
     $("div.pagination").jPages({
         containerID: elem,
         perPage: pp,
         first: "first",
         last: "last"
     });
-};
+}
 
 // CROSSBROWSER PLACEHOLDER TEXT FOR TEXT INPUTS FROM http://bavotasan.com/2011/html5-placeholder-jquery-fix/
 $(function() {
+    "use strict";
     var input = document.createElement("input");
-    if (('placeholder' in input)==false) {
+    if (('placeholder' in input)===false) {
         $('[placeholder]').focus(function() {
             var i = $(this);
-            if (i.val() == i.attr('placeholder')) {
+            if (i.val() === i.attr('placeholder')) {
                 i.val('').removeClass('placeholder');
                 if (i.hasClass('password')) {
                     i.removeClass('password');
@@ -171,8 +187,8 @@ $(function() {
             }
         }).blur(function() {
             var i = $(this);
-            if (i.val() == '' || i.val() == i.attr('placeholder')) {
-                if (this.type=='password') {
+            if (i.val() === '' || i.val() === i.attr('placeholder')) {
+                if (this.type==='password') {
                     i.addClass('password');
                     this.type='text';
                 }
@@ -181,21 +197,22 @@ $(function() {
         }).blur().parents('form').submit(function() {
             $(this).find('[placeholder]').each(function() {
                 var i = $(this);
-                if (i.val() == i.attr('placeholder'))
-                    i.val('');
-            })
-                });
+                if (i.val() === i.attr('placeholder'))
+                    {i.val('');}
+            });
+        });
     }
 });
 
 /***** ERROR ALERT *****/
 function ErrorAlert(d, element) {
+    "use strict";
     var alertHTML = '<div id="alert" class="alert" style="display: none; "><img src="images/icn-alert.png" /><h2 style="opacity: 0; ">' + d + '</h2></div>';
     $(element).prepend(alertHTML);
     var errorID = '#alert';
     var error = $(errorID);
     if($('#alert').is(":visible")){
-        return
+        return false;
     } else {
         error.slideDown('fast', function () {
             // $(this).html('<h2>' + d + '</h2>');
@@ -207,4 +224,4 @@ function ErrorAlert(d, element) {
             $(this).remove();
         });     
     }
-};
+}

@@ -17,6 +17,7 @@ $product_id = (int) @$_REQUEST['product_id'];
 $product_name = @$_REQUEST['product_name'];
 
 $get_all = @$_REQUEST['get_all'];
+$popup = @$_REQUEST['popup'];
 
 $result_array = array();
 
@@ -24,7 +25,11 @@ if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
   require_once('../inc/db.inc.php');
   if ($get_all === 'show' or $get_all === 'product') {
     if ($vendor_id) {
-      $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name`, (SELECT COUNT(*) FROM `vendors_${get_all}s` WHERE `vendor_id` = $vendor_id AND `${get_all}_id` = `${get_all}s`.`id`) AS `checked` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+      if ($get_all === 'show') {
+        $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name`, (SELECT `booth_num` FROM `vendors_shows` WHERE `vendor_id` = $vendor_id AND `show_id` = `shows`.`id`) AS `booth_num`, (SELECT `booth_num` IS NOT NULL FROM `vendors_shows` WHERE `vendor_id` = $vendor_id AND `show_id` = `shows`.`id`) AS `checked` FROM `shows` WHERE ! `deleted` ORDER BY `name`";
+      } else {
+        $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name`, (SELECT COUNT(*) FROM `vendors_${get_all}s` WHERE `vendor_id` = $vendor_id AND `${get_all}_id` = `${get_all}s`.`id`) AS `checked` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
+      }
     } else {
       $query = "SELECT `id` AS `${get_all}_id`, `name` AS `${get_all}_name` FROM `${get_all}s` WHERE ! `deleted` ORDER BY `name`";
     }
@@ -49,6 +54,30 @@ if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
       } else {
         $result_array[$key]['vendor_product_ids'] = array();
       }
+    }
+  }
+} elseif ($popup and in_array($popup, array('vendor'))) {
+  require_once('../inc/db.inc.php');
+  if ($popup === 'vendor' and $vendor_id) {
+    $query = "SELECT `vendors`.`id` AS `vendor_id`, `name` AS `vendor_name`, `address` AS `vendor_address`, `city` AS `vendor_city`, `state` AS `vendor_state`, `zip` AS `vendor_zip`, `country` AS `vendor_country`, `phone` AS `vendor_phone`, `fax` AS `vendor_fax`, `email` AS `vendor_email`, `url` AS `vendor_url`, `level` AS `vendor_level` FROM `vendors` WHERE `vendors`.`id` = :vendor_id /* " . __FILE__ . ':' . __LINE__ . ' */';
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':vendor_id', $vendor_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $vendor_id = (int) $vendor_id;
+    $result_array = array();
+    if ($result_array = $stmt->fetch(PDO::FETCH_ASSOC)) {
+      $result_array['vendor_id'] = (int) $result_array['vendor_id'];
+      $query = "SELECT `shows`.`id` AS `show_id`, `shows`.`name` AS `show_name`, `vendors_shows`.`booth_num` FROM `vendors_shows` LEFT JOIN `shows` ON `vendors_shows`.`show_id` = `shows`.`id` WHERE `vendors_shows`.`vendor_id` = :vendor_id AND ! `shows`.`deleted` ORDER BY `shows`.`name` /* " . __FILE__ . ':' . __LINE__ . ' */';
+      $stmt = $pdo->prepare($query);
+      $stmt->bindParam(':vendor_id', $vendor_id, PDO::PARAM_INT);
+      $stmt->execute();
+      $vendor_id = (int) $vendor_id;
+      $result_array['shows'] = array();
+      while ($result_show = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $result_show['show_id'] = (int) $result_show['show_id'];
+        $result_array['shows'][] = $result_show;
+      }
+      $result_array = array($result_array);
     }
   }
 } elseif ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$vendor_city$vendor_state$vendor_country$product_name") {
@@ -121,19 +150,28 @@ if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
     $stmt->execute();
     $result_array = array();
     $result_array = $stmt->fetchAll();
+
+    foreach ($params as $param) {
+      if (substr($param, -3) === '_id') {
+        $$param = (int) $$param;
+      }
+    }
+
   }
 }
 
 // Clean out all the numeric keys, since we dont' need them.
-foreach (array_keys($result_array) as $result_key) {
-  foreach (array_keys($result_array[$result_key]) as $key) {
-    if (is_int($key)) {
-      unset($result_array[$result_key][$key]);
-    } elseif ($key === 'checked') {
-      $result_array[$result_key][$key] = (bool) $result_array[$result_key][$key];
-    } elseif (substr($key, -3) === '_id') {
-      // Make IDs numeric.
-      $result_array[$result_key][$key] = (int) $result_array[$result_key][$key];
+if (!$popup) {
+  foreach (array_keys($result_array) as $result_key) {
+    foreach (array_keys($result_array[$result_key]) as $key) {
+      if (is_int($key)) {
+        unset($result_array[$result_key][$key]);
+      } elseif ($key === 'checked') {
+        $result_array[$result_key][$key] = (bool) $result_array[$result_key][$key];
+      } elseif (substr($key, -3) === '_id') {
+        // Make IDs numeric.
+        $result_array[$result_key][$key] = (int) $result_array[$result_key][$key];
+      }
     }
   }
 }

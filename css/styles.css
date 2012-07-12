@@ -166,12 +166,14 @@ ul {
 
 .slide {
 	padding-bottom: 5px;
-	height: 325px;
+	eight: 325px;
 }
 
 .hidden {
 	display: none;
 }
+
+
 
 
 
@@ -185,7 +187,7 @@ ul {
 }
 
 .header h1.title {
-	
+	color: #ffffff;
 }
 
 .header img {
@@ -292,6 +294,11 @@ a.button {
 	font-size: 10px;
 }
 
+.formButtons {
+	margin: 10px auto;
+	width: 180px;
+}
+
 
 /*** FORM ELEMENTS ***/
 form ul li {
@@ -301,9 +308,16 @@ form ul li {
 
 label {
 	display: inline-block;
-	width: 20%;
+	margin-right: 10px;
+	width: 25%;
 	font-size: 14px;
 }
+
+label.forSelect {
+	margin: 10px 0;
+	width: 30%;
+}
+
 #editProductsList label, #editShowList label {
 	width: auto;
 }
@@ -317,7 +331,7 @@ label {
 input[type=textbox], select {
 	font-size: 18px;
 	padding: 5px 0 5px 10px;
-	width: 76%;
+	width: 67%;
 	border: 1px solid #c9c9c9;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -328,6 +342,14 @@ input[type=textbox], select {
 select {
 	padding: 0 0 0 5px;
 	width: auto;
+	height: 35px;
+}
+
+.formGroup select {
+	width: 70%;
+	-webkit-border-radius: 5px 0 0 5px;
+	-moz-border-radius: 5px 0 0 5px;
+	border-radius: 5px 0 0 5px;
 }
 
 .boxed input[type=textbox], .boxed textarea {
@@ -366,7 +388,7 @@ form ul.formGroup {
 	float: left;
 	padding: 10px;
 	width: 28%;
-	min-height: 240px;
+	min-height: 295px;
 	background: #efefef;
 	border: 1px solid #c9c9c9;
 	-webkit-border-radius: 5px;
@@ -437,6 +459,11 @@ form li.disabled input {
 	color: #999;
 }
 
+.wrapperFormGroups {
+	height: 325px;
+}
+
+
 
 /*** LIST RECORDS ELEMENTS ***/
 .container.listRecords {
@@ -456,6 +483,10 @@ form li.disabled input {
 
 .listRecords.searchResults li a {
 	color: #3799FF;
+}
+
+.listRecords.searchResults span.col4 {
+	margin-right: 0;
 }
 
 .listRecords li a:hover, .listRecords li.listItem:hover a {
@@ -492,6 +523,7 @@ form li.disabled input {
 	-moz-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
 	-webkit-box-shadow: inset 0 3px 8px rgba(0,0,0,.4);
 	box-shadow: inset 0 3px 8px rgba(0,0,0,.24);
+	cursor: pointer;
 }
 
 
@@ -553,6 +585,12 @@ form li.disabled input {
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
+}
+
+.hint {
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
 }
 
 
