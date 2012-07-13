@@ -38,7 +38,7 @@ function GetSelectBoxOptions(params) {
     "use strict";
     $.each(params, function (i) {
         $.ajax({
-            url: '../search/finalsearch.php?get_all=' + params[i],
+            url: 'search/finalsearch.php?get_all=' + params[i],
             success: function (data) {
                 new RenderTemplate(data, params[i] + 'Options');
                 return false;
@@ -95,7 +95,7 @@ function DisableFields() {
         $.ajax({
             url: "search/finalsearch.php?" + dataToBeSent,
             success: function (data) {
-                var items = data.items; 
+                var items = data.items;
                 if(items.length){
                     new RenderTemplate(data, 'searchResults');
                     new CreateVendorDetailClickEvent(items);
@@ -222,6 +222,6 @@ function ErrorAlert(d, element) {
             .delay('3000')
             .slideUp('fast', function () {
             $(this).remove();
-        });     
+        });
     }
 }

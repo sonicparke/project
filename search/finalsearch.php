@@ -5,7 +5,7 @@ ini_set('html_errors', FALSE);
 
 $show_id = (int) @$_REQUEST['show_id'];
 $show_name = @$_REQUEST['show_name'];
-$show_city = @$_REQUEST['show_city'];
+$show_location = @$_REQUEST['show_location'];
 
 $vendor_id = (int) @$_REQUEST['vendor_id'];
 $vendor_name = @$_REQUEST['vendor_name'];
@@ -21,7 +21,7 @@ $popup = @$_REQUEST['popup'];
 
 $result_array = array();
 
-if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
+if ($get_all and in_array($get_all, array('show', 'vendor', 'product', 'show_location'))) {
   require_once('../inc/db.inc.php');
   if ($get_all === 'show' or $get_all === 'product') {
     if ($vendor_id) {
@@ -55,6 +55,12 @@ if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
         $result_array[$key]['vendor_product_ids'] = array();
       }
     }
+  } elseif ($get_all === 'show_location') {
+    $query = "SELECT DISTINCT CONCAT_WS(\", \", `city`, `state`, `country`) AS `location` FROM `shows` WHERE ! `deleted` AND (`city` IS NOT NULL OR `state` IS NOT NULL OR `country` IS NOT NULL ) ORDER BY CONCAT_WS(\", \", `city`, `state`, `country`)";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $result_array = array();
+    $result_array = $stmt->fetchAll();
   }
 } elseif ($popup and in_array($popup, array('vendor'))) {
   require_once('../inc/db.inc.php');
@@ -80,7 +86,7 @@ if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
       $result_array = array($result_array);
     }
   }
-} elseif ($show_id or $vendor_id or $product_id or "$show_name$show_city$vendor_name$vendor_city$vendor_state$vendor_country$product_name") {
+} elseif ($show_id or $vendor_id or $product_id or "$show_name$show_location$vendor_name$vendor_city$vendor_state$vendor_country$product_name") {
   require_once('../inc/db.inc.php');
   require_once('../inc/search.inc.php');
 
@@ -97,6 +103,10 @@ if ($get_all and in_array($get_all, array('show', 'vendor', 'product'))) {
       $where[] = "`shows`.`name` LIKE :show_name";
       $params[] = 'show_name';
       $show_name = "%$show_name%";
+    }
+    if ($show_location) {
+      $where[] = "CONCAT_WS(\", \", `shows`.`city`, `shows`.`state`, `shows`.`country`) = :show_location";
+      $params[] = 'show_location';
     }
   }
 

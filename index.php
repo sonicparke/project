@@ -27,7 +27,7 @@
                         </li>
                         <li><label for="show_year">Year </label><input type="textbox" name="show_year" id="show_year"></li>
                         <!-- <li><label for="show_city">City </label><input type="textbox" name="show_city" id="show_city"></li> -->
-                        <li><label class="forSelect" for="product_city">City </label><select name="show_city" id="showOptionsTemplateArea"></select></li>
+                        <li><label class="forSelect" for="show_location">City </label><select name="show_location" id="show_locationOptionsTemplateArea"></select></li>
                         <li><label for="show_name">Name </label><input type="textbox" name="show_name" id="show_name"></li>
                     </ul>
                 </div>
@@ -75,10 +75,10 @@
     <option value="{{product_name}}">{{product_name}}</option>
 {{/each}}
 </script>
-<script type="text/x-Handlebars-tmpl" id="showOptionsTemplate">
+<script type="text/x-Handlebars-tmpl" id="show_locationOptionsTemplate">
     <option value=""></option>
 {{#each items}}
-    <option value="{{show_name}}">{{show_name}}</option>
+    <option value="{{location}}">{{location}}</option>
 {{/each}}
 </script>
 <?php include 'inc/scripts.php'; ?>
@@ -88,7 +88,7 @@
 
         var params= [
             'product',
-            'city'
+            'show_location'
         ]
         new GetSelectBoxOptions(params);
 

@@ -5,6 +5,7 @@
     <title>XPO Everything Finder Admin</title>
     <link rel="stylesheet" type="text/css" href="../css/jQuery-UI/jquery-ui-1.8.20.custom.css">
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,700|Nunito' rel='stylesheet' type='text/css'>
   </head>
   <body class="admin">
     <div class="header">
